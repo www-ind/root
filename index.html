@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Brothers | Ultra-Premium Auto Restoration</title>
+    <!-- Ultra Premium Typography: Cinzel for Display, Manrope for Body -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Manrope:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- 1. GLOBAL, RESET & PREMIUM SCROLLBAR --- */
+        :root {
+            --bg-color: #050505;
+            --surface-color: #111111;
+            --gold: #D4AF37;
+            --gold-dim: rgba(212, 175, 55, 0.3);
+            --text-main: #f4f4f4;
+            --text-muted: #999999;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Luxury Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--surface-color); border: 1px solid var(--gold-dim); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+        
+        /* Selection Highlight */
+        ::selection { background: var(--gold); color: #000; }
+
+        h1, h2, h3, h4, .logo { font-family: 'Cinzel', serif; font-weight: 400; }
+        .gold-text { color: var(--gold); }
+        
+        /* Cinematic Film Grain Overlay */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 9999;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            opacity: 0.035;
+        }
+
+        section { padding: 8rem 2rem; position: relative; }
+        
+        /* Scroll Reveal Utility Classes */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-header h2 { font-size: 3.5rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem; }
+        .section-header p { font-size: 1rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; font-weight: 300; }
+
+        /* --- 2. GLASSMORPHISM NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 1.5rem 4rem;
+            background: rgba(5, 5, 5, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: padding 0.4s ease;
+        }
+        nav.scrolled { padding: 1rem 4rem; border-bottom: 1px solid var(--gold-dim); }
+        .logo { font-size: 1.8rem; color: #fff; text-decoration: none; letter-spacing: 4px; }
+        .logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 3rem; }
+        .nav-links a {
+            color: #fff; text-decoration: none; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 1px;
+            bottom: -5px; left: 0; background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- 3. CINEMATIC HERO SLIDER (KEN BURNS EFFECT) --- */
+        .hero {
+            height: 100vh; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+        /* Container for background images to allow separate animations */
+        #hero-bg-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+            background-color: #000;
+        }
+        .hero-slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 2s ease-in-out;
+            transform: scale(1.1); /* Start slightly zoomed in */
+        }
+        .hero-slide.active {
+            opacity: 1; transform: scale(1);
+            transition: opacity 2s ease-in-out, transform 8s linear; /* Slow zoom out */
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4), rgba(5,5,5,0.9)); z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 2rem; }
+        .hero-content h1 {
+            font-size: 5rem; letter-spacing: 6px; margin-bottom: 1.5rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .hero-content p {
+            font-size: 1.2rem; font-weight: 300; margin-bottom: 3rem; color: #ddd; letter-spacing: 1px;
+        }
+        .btn {
+            padding: 1.2rem 3.5rem; background: transparent; border: 1px solid var(--gold);
+            color: var(--gold); font-family: 'Cinzel', serif; text-transform: uppercase;
+            letter-spacing: 3px; font-weight: 600; cursor: pointer; position: relative;
+            overflow: hidden; transition: all 0.5s ease;
+        }
+        .btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--gold); transition: all 0.5s ease; z-index: -1;
+        }
+        .btn:hover::before { left: 0; }
+        .btn:hover { color: #000; }
+
+        /* --- 4. 15-IMAGE MARQUEE SCENE (MASKED EDGES) --- */
+        .marquee-container {
+            width: 100%; overflow: hidden; background: var(--bg-color);
+            padding: 4rem 0; position: relative; border-bottom: 1px solid rgba(255,255,255,0.03);
+            /* Gradient mask for smooth fade on edges */
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+        .marquee-track {
+            display: flex; gap: 20px; width: max-content;
+            animation: scrollMarquee 45s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-track img {
+            width: 320px; height: 220px; object-fit: cover; border-radius: 2px;
+            filter: grayscale(100%) brightness(0.6); transition: all 0.5s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        .marquee-track img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.02); border: 1px solid var(--gold-dim); }
+        
+        @keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-50% - 10px)); } }
+
+        /* --- 5. THE LEGACY (ABOUT) --- */
+        .about { max-width: 1400px; margin: 0 auto; display: flex; gap: 6rem; align-items: center; }
+        .about-image-wrapper { flex: 1; position: relative; }
+        .about-image-wrapper::after {
+            content: ''; position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px;
+            border: 1px solid var(--gold); z-index: -1;
+        }
+        .about-image-wrapper img { width: 100%; height: auto; filter: contrast(1.1) saturate(0.8); }
+        .about-text { flex: 1; }
+        .about-text h3 { font-size: 3rem; margin-bottom: 2rem; letter-spacing: 2px; }
+        .about-text p {
+            font-size: 1.1rem; line-height: 1.9; color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 300;
+        }
+        .signature { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; margin-top: 2rem; letter-spacing: 2px;}
+
+        /* --- 6. PREMIUM SERVICES --- */
+        .services { background-color: var(--surface-color); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .service-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4rem 3rem; text-align: center; position: relative; overflow: hidden;
+            transition: all 0.4s ease; backdrop-filter: blur(10px);
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            transform: scaleX(0); transition: transform 0.6s ease;
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--gold-dim); background: rgba(255, 255, 255, 0.04); }
+        .service-card:hover::before { transform: scaleX(1); }
+        
+        .service-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; font-family: serif;}
+        .service-card h4 { font-size: 1.5rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
+        .service-card p { color: var(--text-muted); line-height: 1.7; font-weight: 300; font-size: 0.95rem; }
+
+        /* --- 7. REPUTATION (TESTIMONIALS) --- */
+        .testimonials { background: url('https://images.unsplash.com/photo-1600705722908-bab1e61c0b4d?auto=format&fit=crop&w=1920&q=80') center/cover fixed; position: relative; }
+        .testimonials::before { content: ''; position: absolute; inset: 0; background: rgba(5,5,5,0.85); }
+        .review-container { position: relative; max-width: 900px; margin: 0 auto; text-align: center; z-index: 2; }
+        .quote-icon { font-size: 4rem; color: var(--gold); opacity: 0.5; font-family: 'Cinzel', serif; line-height: 1; margin-bottom: -20px; }
+        .review-text { font-size: 1.6rem; font-weight: 300; font-style: italic; line-height: 1.8; margin-bottom: 2rem; }
+        .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 5px; }
+        .reviewer { font-family: 'Cinzel', serif; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* --- 8. CONCIERGE (LOCATION & MAP) --- */
+        .location { max-width: 1400px; margin: 0 auto; }
+        .location-wrapper {
+            display: flex; gap: 0; background: var(--surface-color); 
+            border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .contact-details { flex: 1; padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; }
+        .info-block { margin-bottom: 3rem; }
+        .info-block:last-child { margin-bottom: 0; }
+        .info-block span { display: block; color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .info-block p { font-size: 1.2rem; font-weight: 300; color: #ccc; line-height: 1.6; }
+        
+        /* Ultra-detailed map frame */
+        .map-wrapper { flex: 1.5; padding: 1rem; background: #0a0a0a; border-left: 1px solid var(--gold-dim); position: relative; }
+        .map-wrapper::before, .map-wrapper::after {
+            content: ''; position: absolute; width: 20px; height: 20px; border: 1px solid var(--gold); pointer-events: none;
+        }
+        .map-wrapper::before { top: 20px; left: 20px; border-bottom: none; border-right: none; }
+        .map-wrapper::after { bottom: 20px; right: 20px; border-top: none; border-left: none; }
+        .map-wrapper iframe {
+            width: 100%; height: 100%; min-height: 500px; border: none;
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(120%) grayscale(40%); /* Bespoke dark map filter */
+        }
+
+        /* --- 9. FOOTER --- */
+        footer { background: #000; padding: 4rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); }
+        .footer-logo { font-size: 2rem; color: #fff; font-family: 'Cinzel', serif; letter-spacing: 5px; margin-bottom: 1rem; display: inline-block; }
+        .footer-logo span { color: var(--gold); }
+        footer p { color: #555; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media(max-width: 1024px) {
+            .about, .location-wrapper { flex-direction: column; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            nav { padding: 1.5rem 2rem; }
+        }
+        @media(max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            .contact-details { padding: 3rem 2rem; }
+            section { padding: 5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Subtle Film Grain -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">ROOT<span>BROTHERS</span></a>
+        <div class="nav-links">
+            <a href="#about">The Legacy</a>
+            <a href="#services">Excellence</a>
+            <a href="#reviews">Reputation</a>
+            <a href="#location">Concierge</a>
+        </div>
+    </nav>
+
+    <!-- Cinematic Hero Section -->
+    <header class="hero" id="hero">
+        <div id="hero-bg-container">
+            <!-- Background slides generated by JS -->
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+            <h1>Precision <span>&</span> Prestige</h1>
+            <p>Chicago's 5-Star Rated Automotive Restoration and Repair Destination.</p>
+            <button class="btn" onclick="document.getElementById('services').scrollIntoView();">Experience Perfection</button>
+        </div>
+    </header>
+
+    <!-- 15-Image Rotating Scene -->
+    <section class="marquee-container reveal" id="showcase">
+        <div class="marquee-track" id="marquee-track">
+            <!-- Images generated by JS -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-image-wrapper reveal">
+            <img src="https://images.unsplash.com/photo-1623869675781-80aa31012a5a?auto=format&fit=crop&w=1000&q=80" alt="Master Mechanic at Work">
+        </div>
+        <div class="about-text reveal">
+            <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <p>The Legacy</p>
+                <h2>Uncompromising <span class="gold-text">Honesty.</span></h2>
+            </div>
+            <p>At Root Brothers Auto Repair, we believe luxury is defined not just by the vehicles we service, but by the integrity of our craftsmanship. Situated in the heart of Chicago's Bridgeport neighborhood, we have cultivated a reputation for unmatched transparency and skill.</p>
+            <p>We are distinguished by our commitment to honest service—where high-end mechanical precision meets cost-effective, reliable solutions. We are a modern facility equipped with the finest amenities, yet grounded in traditional values.</p>
+            <div class="signature">Root Brothers</div>
+        </div>
+    </section>
+
+    <!-- Premium Services Section -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <p>Our Expertise</p>
+            <h2>Bespoke <span class="gold-text">Services</span></h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">I</div>
+                <h4>Body Restoration</h4>
+                <p>Flawless structural and cosmetic repair, returning your vehicle to its showroom glory with seamless precision and high-grade finishing.</p>
+            </div>
+            <div class="service-card reveal" style="transition-delay: 0.1s;">
+                <div class="service-icon">II</div>
+                <h4>Window Mechanisms</h4>
+                <p>Advanced diagnostic and repair services for complex mechanical and electrical window track failures, ensuring silent, smooth operation.</p>
+            </div>
+            <div class="service-card reveal" style="transition-delay: 0.2s;">
+                <div class="service-icon">III</div>
+                <h4>Mirror Calibration</h4>
+                <p>Expert realignment, OEM electrical wiring, and physical restoration of crucial exterior visibility components.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="reviews">
+        <div class="review-container reveal">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <p>Clientele</p>
+                <h2>Impeccable <span class="gold-text">Reputation</span></h2>
+            </div>
+            <div class="quote-icon">“</div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">The hallmark of true luxury is trust. The mechanics here fixed a broken side mirror and initially refused payment, showcasing a dedication to honest customer service that is virtually extinct in today's world. Absolute perfection.</p>
+            <p class="reviewer">— Verified Patron</p>
+        </div>
+    </section>
+
+    <!-- Location & Map Section -->
+    <section class="location" id="location">
+        <div class="section-header reveal">
+            <p>Concierge</p>
+            <h2>Our <span class="gold-text">Facility</span></h2>
+        </div>
+        <div class="location-wrapper reveal">
+            <div class="contact-details">
+                <div class="info-block">
+                    <span>Location</span>
+                    <p>912 W 35th St<br>Chicago, IL 60609, USA</p>
+                </div>
+                <div class="info-block">
+                    <span>Operating Hours</span>
+                    <p>Monday - Friday: 9:00 AM – 6:00 PM<br>Weekends: Closed</p>
+                </div>
+                <div class="info-block">
+                    <span>Direct Contact</span>
+                    <p>+1 773-376-1080</p>
+                </div>
+                <div class="info-block">
+                    <span>Amenities</span>
+                    <p>Major Credit Cards Accepted<br>Premium Client Lounges</p>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.6373752538965!2d-87.65219972355523!3d41.83067647124694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c30b1bc4423%3A0x7cc5556e31b54b10!2sRoot%20Brothers%20Auto%20Repair!5e0!3m2!1sen!2sus!4v1716900000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="#" class="footer-logo">ROOT<span>BROTHERS</span></a>
+        <p>&copy; 2026 Ultra-Premium Automotive Restoration. Excellence Maintained.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR DYNAMIC LUXURY FEATURES -->
+    <script>
+        // --- 1. Navbar Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // --- 2. Scroll Reveal Animations (Intersection Observer) ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Reveal only once
+                }
+            });
+        }, { root: null, threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- 3. Cinematic Hero Slider (8 Images, Ken Burns Effect) ---
+        const heroBgContainer = document.getElementById('hero-bg-container');
+        const heroImages = [
+            'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1920&q=80', // Aston Martin detail
+            'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1920&q=80', // Premium Garage
+            'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1920&q=80', // Engine luxury
+            'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1920&q=80', // Porsche curve
+            'https://images.unsplash.com/photo-1625047509168-a7006f829edc?auto=format&fit=crop&w=1920&q=80', // Mechanic hands
+            'https://images.unsplash.com/photo-1503376712351-5079a4a75416?auto=format&fit=crop&w=1920&q=80', // Paint reflection
+            'https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=1920&q=80', // Audi headlight
+            'https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=1920&q=80'  // Luxury interior
+        ];
+
+        // Create img div elements
+        heroImages.forEach((src, index) => {
+            let div = document.createElement('div');
+            div.className = 'hero-slide';
+            if (index === 0) div.classList.add('active');
+            div.style.backgroundImage = `url(${src})`;
+            heroBgContainer.appendChild(div);
+        });
+
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000); // Crossfade every 4 seconds
+
+        // --- 4. Populate 15-Image Marquee seamlessly ---
+        const marqueeTrack = document.getElementById('marquee-track');
+        const marqueeImgUrls = [
+            'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&q=80',
+            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400&q=80',
+            'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400&q=80',
+            'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=400&q=80',
+            'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=400&q=80',
+            'https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?w=400&q=80',
+            'https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=400&q=80',
+            'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&q=80',
+            'https://images.unsplash.com/photo-1605810711744-505ce3199859?w=400&q=80',
+            'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=400&q=80',
+            'https://images.unsplash.com/photo-1599256621730-535171e28e50?w=400&q=80',
+            'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&q=80',
+            'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400&q=80',
+            'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80',
+            'https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=400&q=80'
+        ];
+
+        // Add array twice to create the infinite scroll illusion perfectly
+        const duplicatedUrls = [...marqueeImgUrls, ...marqueeImgUrls];
+        
+        let marqueeHTML = '';
+        duplicatedUrls.forEach(src => {
+            marqueeHTML += `<img src="${src}" loading="lazy" alt="Auto Detail">`;
+        });
+        marqueeTrack.innerHTML = marqueeHTML;
+
+    </script>
+</body>
+</html>

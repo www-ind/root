@@ -888,6 +888,97 @@
             overflow-y: auto;
         }
 
+        .doctor-gallery-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 210;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(14, 33, 27, 0.78);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+        }
+
+        .doctor-gallery-modal.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .doctor-gallery-panel {
+            width: min(1100px, 96vw);
+            max-height: calc(100svh - 3rem);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: var(--paper);
+            border-radius: 18px;
+            box-shadow: 0 24px 80px rgba(14, 33, 27, 0.35);
+            transform: translateY(18px) scale(0.97);
+            transition: transform 0.28s ease;
+        }
+
+        .doctor-gallery-modal.open .doctor-gallery-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        .doctor-gallery-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.1rem 1.4rem;
+            border-bottom: 1px solid rgba(22, 51, 43, 0.08);
+            background: rgba(239, 233, 218, 0.6);
+        }
+
+        .doctor-gallery-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            color: var(--forest-deep);
+        }
+
+        .doctor-gallery-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--forest-deep);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+        }
+
+        .doctor-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+            gap: 1rem;
+            padding: 1.25rem;
+            overflow-y: auto;
+        }
+
+        .doctor-gallery-grid img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            background: var(--mist);
+        }
+
+        .doc-card {
+            cursor: pointer;
+        }
+
+        .doc-card:focus-visible {
+            outline: 2px solid var(--gold-light);
+            outline-offset: 4px;
+        }
+
         .modal__eyebrow {
             font-family: 'IBM Plex Mono', monospace;
             font-size: 0.66rem;
@@ -1384,7 +1475,8 @@
         }
 
         .hero-photo .hero-slide.active {
-            opacity: 0.9;
+            opacity: 1;
+            filter: brightness(1.5);
             transform: scale(1);
         }
 
@@ -2325,16 +2417,16 @@
     <!-- HERO -->
     <section class="hero" id="top">
         <div class="hero-photo" id="heroSlider">
-            <img class="hero-slide active" src="https://picsum.photos/seed/kanha-hero-01/1600/1000" alt="Kanha Clinic consultation room in Navsari" loading="eager">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-02/1600/1000" alt="Doctor consultation at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-03/1600/1000" alt="Pediatric care consultation at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-04/1600/1000" alt="Preventive healthcare consultation in Navsari" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-05/1600/1000" alt="Family healthcare consultation at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-06/1600/1000" alt="Heart care consultation in Gujarat clinic" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-07/1600/1000" alt="Patient care at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-08/1600/1000" alt="Medical checkup at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-09/1600/1000" alt="Modern family clinic in Navsari" loading="lazy">
-            <img class="hero-slide" src="https://picsum.photos/seed/kanha-hero-10/1600/1000" alt="Doctor and patient care environment at Kanha Clinic" loading="lazy">
+            <img class="hero-slide active" src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Kanha Clinic consultation room in Navsari" loading="eager">
+            <img class="hero-slide" src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Doctor consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Pediatric care consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Preventive healthcare consultation in Navsari" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Family healthcare consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Heart care consultation in Gujarat clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Patient care at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Medical checkup at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Modern family clinic in Navsari" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Doctor and patient care environment at Kanha Clinic" loading="lazy">
         </div>
         <div class="hero-grid">
             <div>
@@ -2355,47 +2447,49 @@
     <!-- PHOTO MARQUEE -->
     <section class="photo-marquee" aria-label="Photo gallery of Kanha Clinic">
         <div class="photo-marquee-track">
-            <img src="https://picsum.photos/seed/kanha-m01/380/380" alt="Kanha Clinic healthcare environment" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m02/380/380" alt="Doctor consultation room at Kanha Clinic" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m03/380/380" alt="Patient care in clinic" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m04/380/380" alt="Kanha Clinic interior and reception" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m05/380/380" alt="Preventive care consultation" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m06/380/380" alt="Family medicine examination room" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m07/380/380" alt="Pediatric care at Kanha Clinic" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m08/380/380" alt="Medical consultation in Navsari" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m09/380/380" alt="Kanha Clinic patient consultation" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m10/380/380" alt="Heart and wellness consultation at clinic" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m11/380/380" alt="Clinic examination and care environment" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m12/380/380" alt="Modern family clinic in Gujarat" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m13/380/380" alt="Medical wellness center in Navsari" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m14/380/380" alt="Clinic hallway and care space" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m15/380/380" alt="Kanha Clinic patient experience" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m16/380/380" alt="Health and preventive care environment" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m17/380/380" alt="Pediatric consultation at clinic" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m18/380/380" alt="Family doctor consultation area" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m19/380/380" alt="General healthcare visit at Kanha Clinic" loading="lazy">
-            <img src="https://picsum.photos/seed/kanha-m20/380/380" alt="Kanha Clinic care and wellness environment" loading="lazy">
+            <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="General healthcare visit at Kanha Clinic" loading="lazy">
+            <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Kanha Clinic care and wellness environment" loading="lazy">
+            <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Patient care in clinic" loading="lazy">
+            <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Kanha Clinic interior and reception" loading="lazy">
+            <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Preventive care consultation" loading="lazy">
+            <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Family medicine examination room" loading="lazy">
+            <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Pediatric care at Kanha Clinic" loading="lazy">
+            <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Medical consultation in Navsari" loading="lazy">
+            <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Kanha Clinic patient consultation" loading="lazy">
+            <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Heart and wellness consultation at clinic" loading="lazy">
+            <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic examination and care environment" loading="lazy">
+            <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Modern family clinic in Gujarat" loading="lazy">
+            <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Kanha Clinic healthcare environment" loading="lazy">
+            <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Doctor consultation room at Kanha Clinic" loading="lazy">
+            <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Medical wellness center in Navsari" loading="lazy">
+            <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic hallway and care space" loading="lazy">
+            <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Kanha Clinic patient experience" loading="lazy">
+            <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Health and preventive care environment" loading="lazy">
+            <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Pediatric consultation at clinic" loading="lazy">
+            <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Family doctor consultation area" loading="lazy">
+            
             <!-- duplicate set for seamless loop -->
-            <img src="https://picsum.photos/seed/kanha-m01/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m02/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m03/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m04/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m05/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m06/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m07/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m08/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m09/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m10/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m11/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m12/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m13/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m14/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m15/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m16/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m17/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m18/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m19/380/380" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://picsum.photos/seed/kanha-m20/380/380" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="" loading="lazy" aria-hidden="true">
+            <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="" loading="lazy" aria-hidden="true">
+            
         </div>
     </section>
 
@@ -2520,13 +2614,13 @@
                 <h2>Care led by two named doctors —<br>not a rotating roster.</h2>
             </div>
             <div class="ph" style="width:180px; height:110px; border-radius:3px; flex-shrink:0;">
-                <img src="https://picsum.photos/seed/kanha-06/360/220" alt="Kanha Clinic consultation room"
+                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Kanha Clinic consultation room"
                     loading="lazy">
             </div>
         </div>
         <div class="doctor-grid">
-            <div class="doc-card reveal">
-                <div class="ph doc-photo"><img src="https://picsum.photos/seed/kanha-04/560/350"
+            <div class="doc-card reveal" tabindex="0" role="button" aria-haspopup="dialog" data-doctor="Dr. Pratik Patel" data-gallery="pratik">
+                <div class="ph doc-photo"><img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg"
                         alt="Cardiology and internal medicine consultation" loading="lazy"></div>
                 <div class="doc-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#D9BC7C" stroke-width="1.4">
@@ -2543,8 +2637,8 @@
                     <li>Adult general medicine, diabetes care &amp; cardiac imaging</li>
                 </ul>
             </div>
-            <div class="doc-card reveal">
-                <div class="ph doc-photo"><img src="https://picsum.photos/seed/kanha-05/560/350"
+            <div class="doc-card reveal" tabindex="0" role="button" aria-haspopup="dialog" data-doctor="Dr. Khushbu Patel" data-gallery="khushbu">
+                <div class="ph doc-photo"><img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg"
                         alt="Paediatric consultation" loading="lazy"></div>
                 <div class="doc-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="#D9BC7C" stroke-width="1.4">
@@ -2564,6 +2658,16 @@
             </div>
         </div>
     </section>
+
+    <div class="doctor-gallery-modal" id="doctorGalleryModal" aria-hidden="true">
+        <div class="doctor-gallery-panel" role="dialog" aria-modal="true" aria-labelledby="doctorGalleryTitle">
+            <div class="doctor-gallery-header">
+                <h3 class="doctor-gallery-title" id="doctorGalleryTitle">Doctor photo gallery</h3>
+                <button type="button" class="doctor-gallery-close" id="doctorGalleryClose" aria-label="Close doctor photo gallery">×</button>
+            </div>
+            <div class="doctor-gallery-grid" id="doctorGalleryGrid"></div>
+        </div>
+    </div>
 
     <!-- SERVICES -->
     <section class="services" id="care">
@@ -2836,48 +2940,49 @@
         <div class="preloading-marquee-container">
             <div class="preloading-marquee-track">
                 <!-- Set 1 (20 images) -->
-                <img src="https://picsum.photos/seed/m1/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m2/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m3/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m4/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m5/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m6/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m7/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m8/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m9/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m10/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m11/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m12/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m13/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m14/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m15/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m16/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m17/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m18/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m19/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m20/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                
+                <!-- Set 1 (20 images) -->
+                <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+
                 <!-- Set 2 for infinite scroll -->
-                <img src="https://picsum.photos/seed/m1/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m2/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m3/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m4/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m5/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m6/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m7/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m8/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m9/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m10/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m11/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m12/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m13/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m14/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m15/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m16/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m17/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m18/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m19/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://picsum.photos/seed/m20/400/300" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
             </div>
         </div>
     </section>
@@ -3617,6 +3722,66 @@
                     generatePremiumReport(patientInfo, calcName);
                 });
             });
+        });
+
+        const doctorGalleryModal = document.getElementById('doctorGalleryModal');
+        const doctorGalleryTitle = document.getElementById('doctorGalleryTitle');
+        const doctorGalleryGrid = document.getElementById('doctorGalleryGrid');
+        const doctorGalleryClose = document.getElementById('doctorGalleryClose');
+        let activeDoctorCard = null;
+
+        function openDoctorGallery(card) {
+            const doctorName = card.dataset.doctor;
+            const galleryKey = card.dataset.gallery;
+            if (!doctorName || !galleryKey) return;
+
+            activeDoctorCard = card;
+            doctorGalleryTitle.textContent = `${doctorName} — Photo Gallery`;
+            doctorGalleryGrid.replaceChildren();
+
+            for (let index = 1; index <= 10; index += 1) {
+                const image = document.createElement('img');
+                const photoNumber = String(index).padStart(2, '0');
+                image.src = `https://picsum.photos/seed/kanha-doctor-${galleryKey}-${photoNumber}/350/350`;
+                image.alt = `${doctorName} gallery photo ${index}`;
+                image.width = 350;
+                image.height = 350;
+                image.loading = 'lazy';
+                doctorGalleryGrid.appendChild(image);
+            }
+
+            doctorGalleryModal.classList.add('open');
+            doctorGalleryModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            doctorGalleryClose.focus();
+        }
+
+        function closeDoctorGallery() {
+            doctorGalleryModal.classList.remove('open');
+            doctorGalleryModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            if (activeDoctorCard) activeDoctorCard.focus();
+        }
+
+        document.querySelectorAll('.doc-card').forEach(card => {
+            card.addEventListener('click', () => openDoctorGallery(card));
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openDoctorGallery(card);
+                }
+            });
+        });
+
+        doctorGalleryClose.addEventListener('click', closeDoctorGallery);
+        doctorGalleryModal.addEventListener('click', (event) => {
+            if (event.target === doctorGalleryModal) closeDoctorGallery();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && doctorGalleryModal.classList.contains('open')) {
+                closeDoctorGallery();
+            }
         });
 
         const serviceModal = document.getElementById('serviceModal');

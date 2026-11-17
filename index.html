@@ -3822,8 +3822,11 @@
                     <input id="patientPhone" name="phone" type="tel" placeholder="Enter your mobile number" required>
 
                     <label for="patientAddress">Address</label>
-                    <textarea id="patientAddress" name="address" rows="3" placeholder="Enter your address"
-                        required></textarea>
+                    <textarea id="patientAddress" name="address" rows="3" placeholder="Enter your address (optional)"></textarea>
+                    <label style="display:flex;gap:.55rem;align-items:flex-start;text-transform:none;letter-spacing:0;font-family:'Manrope',sans-serif;font-size:.76rem;line-height:1.5;margin:0 0 1rem;color:#54594f;">
+                        <input id="patientLeadConsent" type="checkbox" required style="width:auto;margin:.2rem 0 0;">
+                        I explicitly consent to Kanha Clinic storing my contact details, the information I enter in this health tool, and its generated assessment response for clinic record-keeping and follow-up. I understand this is health information.
+                    </label>
 
                     <div class="patient-modal__actions">
                         <button type="button" class="patient-modal__cancel" id="patientModalCancel">Cancel</button>
@@ -3888,6 +3891,10 @@
                             placeholder="Tell us a little about your concern"></textarea>
                     </div>
 
+                    <label style="display:flex;gap:.55rem;align-items:flex-start;text-transform:none;letter-spacing:0;font-family:'Manrope',sans-serif;font-size:.76rem;line-height:1.5;margin:.2rem 0 1rem;color:#54594f;">
+                        <input id="appointmentLeadConsent" type="checkbox" required style="width:auto;margin:.2rem 0 0;">
+                        I agree that Kanha Clinic may use my name and phone number to respond to this appointment request.
+                    </label>
                     <div class="appointment-modal__actions">
                         <button type="button" class="appointment-modal__cancel"
                             id="appointmentModalCancel">Cancel</button>
@@ -4057,9 +4064,10 @@
                 <path d="M12 9v4M12 17h.01" stroke-linecap="round" />
                 <circle cx="12" cy="12" r="9" />
             </svg>
-            <div>These tools give general, educational estimates only — they run entirely in your browser and nothing is
-                stored or sent anywhere. They are not a diagnosis. For a personal assessment, please visit Dr. Pratik
-                Patel or Dr. Khushbu Patel at Kanha Clinic.</div>
+            <div>These tools provide general educational estimates, not a diagnosis. If you submit your contact details,
+                your name, phone number and the tool or appointment you selected may be sent securely to Kanha Clinic
+                for follow-up. Screening measurements and results are not sent to the lead spreadsheet. For a personal
+                assessment, please visit Dr. Pratik Patel or Dr. Khushbu Patel at Kanha Clinic.</div>
         </div>
 
         <div class="tool-grid reveal">
@@ -4490,7 +4498,24 @@
             if (event.target === appointmentModal) closeAppointmentModal();
         });
 
-        appointmentForm.addEventListener('submit', (event) => {
+        // Replace this placeholder with your deployed Google Apps Script Web App URL.
+        const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyAlCk0D8sG5wFFf34SIsYpk6RatrMvvvAYJl-k86rynmVNtrWu9Hr3gssK0JTyE_HGRQ/exec';
+
+        async function sendLeadToGoogleSheets(lead) {
+            if (!GOOGLE_SHEETS_WEB_APP_URL.startsWith('https://script.google.com/macros/s/')) {
+                throw new Error('Google Sheets endpoint is not configured yet.');
+            }
+            // text/plain avoids a browser CORS preflight. Apps Script receives JSON in postData.contents.
+            // no-cors returns an opaque response, so verify the row in Google Sheets during setup testing.
+            await fetch(GOOGLE_SHEETS_WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ ...lead, submittedAt: new Date().toISOString(), pageUrl: location.href })
+            });
+        }
+
+        appointmentForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const name = document.getElementById('appointmentName').value.trim();
             const phone = document.getElementById('appointmentPhone').value.trim();
@@ -4516,9 +4541,37 @@
                 'Please confirm my appointment slot.'
             ].join('\n');
 
+            const consent = document.getElementById('appointmentLeadConsent');
+            if (!consent || !consent.checked) {
+                window.alert('Please provide consent so the clinic can use your contact details to respond to this appointment request.');
+                return;
+            }
+
+            const submitButton = appointmentForm.querySelector('button[type="submit"]');
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
-            closeAppointmentModal();
-            window.open(whatsappUrl, '_blank');
+            // Open the tab during the user click so browser popup blockers do not block WhatsApp after the async save.
+            const whatsappWindow = window.open('about:blank', '_blank');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending…';
+            try {
+                await sendLeadToGoogleSheets({
+                    leadType: 'appointment', name, phone, preferredDate: date,
+                    preferredTime: time, department, source: 'Appointment form'
+                });
+                closeAppointmentModal();
+                if (whatsappWindow) {
+                    whatsappWindow.location.href = whatsappUrl;
+                } else {
+                    window.location.href = whatsappUrl;
+                }
+            } catch (error) {
+                if (whatsappWindow) whatsappWindow.close();
+                console.error('Lead submission failed:', error);
+                window.alert('We could not send your request to the clinic database. Please try again or call the clinic.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send on WhatsApp';
+            }
         });
 
         const patientModal = document.getElementById('patientModal');
@@ -4547,7 +4600,7 @@
             if (event.target === patientModal) closePatientModal();
         });
 
-        patientInfoForm.addEventListener('submit', (event) => {
+        patientInfoForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const callback = pendingToolCallback;
             if (!callback) return;
@@ -4559,9 +4612,33 @@
                 return;
             }
 
-            const patientInfo = { name, phone, address };
-            closePatientModal();
-            callback(patientInfo);
+            const consent = document.getElementById('patientLeadConsent');
+            if (!consent || !consent.checked) {
+                window.alert('Please provide consent so the clinic can use your contact details to respond to your request.');
+                return;
+            }
+
+            const submitButton = patientInfoForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Saving…';
+            try {
+                // Store the tool name only; do not send measurements, screening answers, or report results.
+                const activeToolButton = document.querySelector('.tool-calc-btn[data-calc].lead-active');
+                await sendLeadToGoogleSheets({
+                    leadType: 'health_tool', name, phone,
+                    source: activeToolButton ? activeToolButton.getAttribute('data-calc') : 'Health tool',
+                    addressProvided: Boolean(address)
+                });
+                const patientInfo = { name, phone, address };
+                closePatientModal();
+                await callback(patientInfo);
+            } catch (error) {
+                console.error('Health-tool lead submission failed:', error);
+                window.alert('We could not save your request. Please try again.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Continue';
+            }
         });
 
         function getToolResultSummary(calcName) {
@@ -4924,9 +5001,48 @@
             const calcName = button.getAttribute('data-calc');
             if (!calcName) return;
             button.addEventListener('click', () => {
-                openPatientModal((patientInfo) => {
+                document.querySelectorAll('.tool-calc-btn').forEach(item => item.classList.remove('lead-active'));
+                button.classList.add('lead-active');
+                openPatientModal(async (patientInfo) => {
                     if (typeof window[calcName] === 'function') {
                         window[calcName]();
+                    }
+
+                    // Capture the tool inputs and rendered response only after calculation.
+                    const toolSections = {
+                        calcBMI: { id: 'tool-bmi', label: 'BMI & Healthy Weight Range' },
+                        calcIDRS: { id: 'tool-idrs', label: 'Diabetes Risk (IDRS)' },
+                        calcHR: { id: 'tool-hr', label: 'Heart-rate zones' },
+                        calcGrowth: { id: 'tool-growth', label: 'Child growth reference' },
+                        calcBP: { id: 'tool-bp', label: 'Blood pressure category' },
+                        calcVaccination: { id: 'tool-vaccines', label: 'Vaccination tracker' }
+                    };
+                    const tool = toolSections[calcName] || { id: '', label: calcName };
+                    const toolRoot = tool.id ? document.getElementById(tool.id) : null;
+                    const inputSummary = toolRoot ? Array.from(toolRoot.querySelectorAll('input, select, textarea'))
+                        .filter(control => control.type !== 'button' && control.type !== 'submit' && control.type !== 'checkbox')
+                        .map(control => {
+                            const label = control.id ? toolRoot.querySelector(`label[for="${control.id}"]`) : null;
+                            const value = control.value ? String(control.value).trim() : '';
+                            return value ? `${label ? label.textContent.trim() : control.name || control.id || 'Input'}: ${value}` : '';
+                        }).filter(Boolean).join(' | ') : '';
+                    let responseSummary = getToolResultSummary(calcName);
+                    if (calcName === 'calcVaccination' && toolRoot) {
+                        const checks = Array.from(toolRoot.querySelectorAll('input[type="checkbox"]'));
+                        const checked = checks.filter(item => item.checked).length;
+                        responseSummary = `${checked} of ${checks.length} vaccination entries marked complete. This is a user-entered tracker status, not confirmation of administration.`;
+                    }
+
+                    try {
+                        await sendLeadToGoogleSheets({
+                            leadType: 'health_assessment', name: patientInfo.name, phone: patientInfo.phone,
+                            source: tool.label, assessmentInputs: inputSummary,
+                            assessmentResponse: responseSummary,
+                            consent: 'explicit_health_data_consent'
+                        });
+                    } catch (error) {
+                        console.error('Health assessment record could not be saved:', error);
+                        window.alert('Your assessment is complete, but its record could not be saved. Please contact the clinic if you need the record retained.');
                     }
                     generatePremiumReport(patientInfo, calcName);
                 });

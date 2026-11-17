@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="en-IN">
-    <meta name="description" content="Kanha Clinic Navsari offers family medicine, pediatric care, preventive health checkups, heart health consultations, and compassionate care in Navsari, Gujarat.">
-    <meta name="keywords" content="Kanha Clinic Navsari, family doctor Navsari, pediatrician Navsari, preventive care clinic Navsari, heart specialist Navsari, child specialist Navsari, general physician Navsari">
+    <meta name="description"
+        content="Kanha Clinic Navsari offers family medicine, pediatric care, preventive health checkups, heart health consultations, and compassionate care in Navsari, Gujarat.">
+    <meta name="keywords"
+        content="Kanha Clinic Navsari, family doctor Navsari, pediatrician Navsari, preventive care clinic Navsari, heart specialist Navsari, child specialist Navsari, general physician Navsari">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#16332B">
     <meta property="og:title" content="Kanha Clinic Navsari | Family Doctor, Pediatrician & Preventive Care">
-    <meta property="og:description" content="Compassionate family medicine, child care, and preventive health guidance in Navsari, Gujarat.">
+    <meta property="og:description"
+        content="Compassionate family medicine, child care, and preventive health guidance in Navsari, Gujarat.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://picsum.photos/seed/kanha-hero-01/1200/630">
     <meta property="og:locale" content="en_IN">
@@ -93,18 +96,31 @@
             animation: preloaderPanelSlide 1.15s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
         }
 
-        .preloader__panel span:nth-child(2) { animation-delay: 0.08s; }
-        .preloader__panel span:nth-child(3) { animation-delay: 0.14s; }
-        .preloader__panel span:nth-child(4) { animation-delay: 0.2s; }
-        .preloader__panel span:nth-child(5) { animation-delay: 0.26s; }
+        .preloader__panel span:nth-child(2) {
+            animation-delay: 0.08s;
+        }
+
+        .preloader__panel span:nth-child(3) {
+            animation-delay: 0.14s;
+        }
+
+        .preloader__panel span:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .preloader__panel span:nth-child(5) {
+            animation-delay: 0.26s;
+        }
 
         @keyframes preloaderPanelSlide {
             0% {
                 transform: translateX(-120%);
             }
+
             55% {
                 transform: translateX(0%);
             }
+
             100% {
                 transform: translateX(120%);
             }
@@ -130,6 +146,14 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
+        }
+
+        .preloader__logo {
+            display: block;
+            width: clamp(88px, 16vw, 132px);
+            height: clamp(88px, 16vw, 132px);
+            object-fit: contain;
+            filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.24));
         }
 
         .preloader__brand::before,
@@ -161,6 +185,7 @@
             0% {
                 transform: translateX(-100%);
             }
+
             100% {
                 transform: translateX(100%);
             }
@@ -277,9 +302,10 @@
             margin-top: 1px;
         }
 
-        .brand svg {
-            width: 30px;
-            height: 30px;
+        .brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
             flex-shrink: 0;
         }
 
@@ -678,13 +704,20 @@
             border: 1px solid rgba(251, 247, 238, 0.12);
             border-radius: 4px;
             padding: 3rem 2.6rem;
-            transition: transform .4s ease, border-color .4s ease, background .4s ease;
+            cursor: pointer;
+            transition: transform .4s ease, border-color .4s ease, background .4s ease, box-shadow .4s ease;
         }
 
         .doc-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             border-color: rgba(184, 147, 63, 0.5);
             background: linear-gradient(165deg, rgba(251, 247, 238, 0.08), rgba(251, 247, 238, 0.02));
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+        }
+
+        .doc-card:focus-visible {
+            outline: 2px solid var(--gold-light);
+            outline-offset: 4px;
         }
 
         .doc-icon {
@@ -728,6 +761,13 @@
             margin-bottom: 1.6rem;
         }
 
+        .doc-card__intro {
+            margin: -0.5rem 0 1.25rem;
+            color: rgba(251, 247, 238, 0.72);
+            font-size: 0.88rem;
+            line-height: 1.75;
+        }
+
         .doc-card ul {
             list-style: none;
         }
@@ -752,30 +792,419 @@
             flex-shrink: 0;
         }
 
+        .doctor-card-prompt {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(251, 247, 238, 0.1);
+            color: var(--gold-light);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .doctor-card-prompt span {
+            font-size: 1rem;
+            transition: transform .25s ease;
+        }
+
+        .doc-card:hover .doctor-card-prompt span {
+            transform: translateX(4px);
+        }
+
+        .doctor-profile-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 220;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(7, 18, 14, 0.82);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .3s ease, visibility .3s ease;
+        }
+
+        .doctor-profile-modal.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .doctor-profile-panel {
+            width: min(940px, 96vw);
+            max-height: min(90vh, 900px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(217, 188, 124, 0.48);
+            border-radius: 22px;
+            background: var(--paper);
+            box-shadow: 0 32px 100px rgba(0, 0, 0, 0.45);
+            transform: translateY(20px) scale(.98);
+            transition: transform .32s cubic-bezier(.2, .75, .25, 1);
+        }
+
+        .doctor-profile-modal.open .doctor-profile-panel {
+            transform: translateY(0) scale(1);
+        }
+
+        .doctor-profile-gallery {
+            position: relative;
+            flex: 0 0 auto;
+            overflow: hidden;
+            padding: 1rem 0;
+            background: linear-gradient(125deg, #10271F, #1B3C30 60%, #294B39);
+        }
+
+        .doctor-profile-gallery::after {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            border-bottom: 1px solid rgba(217, 188, 124, 0.32);
+            background: linear-gradient(90deg, rgba(14, 33, 27, .7), transparent 12%, transparent 88%, rgba(14, 33, 27, .7));
+            content: "";
+            pointer-events: none;
+        }
+
+        .doctor-gallery-track {
+            display: flex;
+            width: max-content;
+            gap: .85rem;
+            padding-right: .85rem;
+            animation: doctorGalleryScroll 48s linear infinite;
+        }
+
+        .doctor-gallery-viewport:hover .doctor-gallery-track,
+        .doctor-gallery-viewport:focus-within .doctor-gallery-track,
+        .doctor-gallery-viewport:active .doctor-gallery-track {
+            animation-play-state: paused;
+        }
+
+        .doctor-gallery-viewport {
+            overflow: hidden;
+        }
+
+        .doctor-gallery-image {
+            display: block;
+            width: 220px;
+            height: 190px;
+            flex: 0 0 220px;
+            overflow: hidden;
+            border: 1px solid rgba(217, 188, 124, 0.32);
+            border-radius: 12px;
+            background: rgba(255, 253, 248, 0.08);
+        }
+
+        .doctor-gallery-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes doctorGalleryScroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .doctor-profile-close {
+            position: absolute;
+            top: 1.15rem;
+            right: 1.25rem;
+            z-index: 2;
+            display: grid;
+            width: 42px;
+            height: 42px;
+            place-items: center;
+            border: 1px solid rgba(255, 253, 248, .42);
+            border-radius: 50%;
+            background: rgba(14, 33, 27, .66);
+            color: var(--paper);
+            font-size: 1.65rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .doctor-profile-close:hover {
+            transform: rotate(90deg);
+            background: rgba(184, 147, 63, .85);
+        }
+
+        .doctor-profile-content {
+            overflow-y: auto;
+            padding: 2rem 2.3rem 2.2rem;
+        }
+
+        .doctor-profile-kicker {
+            margin-bottom: .65rem;
+            color: #80652D;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .66rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .doctor-profile-name {
+            color: var(--forest-deep);
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .doctor-profile-gj {
+            margin-top: .35rem;
+            color: #777065;
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+        }
+
+        .doctor-profile-role {
+            display: inline-flex;
+            margin-top: 1rem;
+            padding: .5rem .85rem;
+            border: 1px solid rgba(184, 147, 63, .35);
+            border-radius: 999px;
+            background: #F7F1E5;
+            color: #705823;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .66rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .doctor-profile-bio {
+            max-width: 720px;
+            margin-top: 1.2rem;
+            color: #505951;
+            font-size: .98rem;
+            line-height: 1.8;
+        }
+
+        .doctor-profile-details {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 1.2rem;
+            margin-top: 1.7rem;
+        }
+
+        .doctor-profile-detail--wide {
+            grid-column: 1 / -1;
+        }
+
+        .doctor-profile-detail {
+            padding: 1.2rem 1.25rem;
+            border: 1px solid rgba(22, 51, 43, .1);
+            border-radius: 12px;
+            background: linear-gradient(145deg, #FBF8F0, #F5F0E5);
+        }
+
+        .doctor-profile-detail h4 {
+            margin-bottom: .8rem;
+            color: #80652D;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: .65rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .doctor-profile-credentials {
+            display: grid;
+            gap: .65rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .doctor-profile-credentials li {
+            display: flex;
+            gap: .6rem;
+            color: var(--forest-deep);
+            font-size: .85rem;
+            line-height: 1.55;
+        }
+
+        .doctor-profile-credentials li::before {
+            flex: 0 0 auto;
+            color: #8A6B2E;
+            content: "✦";
+        }
+
+        .doctor-profile-detail[hidden] {
+            display: none;
+        }
+
+        .doctor-profile-note {
+            color: #505951;
+            font-size: .88rem;
+            line-height: 1.7;
+        }
+
+        .doctor-profile-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(22, 51, 43, .1);
+        }
+
+        .doctor-profile-actions p {
+            color: #656A62;
+            font-size: .78rem;
+        }
+
+        .doctor-profile-book {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            padding: .8rem 1.2rem;
+            border: 1px solid var(--gold);
+            border-radius: 999px;
+            background: var(--forest);
+            color: var(--paper);
+            font-size: .8rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .doctor-profile-book:hover {
+            transform: translateY(-2px);
+            background: var(--gold-light);
+            color: var(--forest-deep);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .doctor-gallery-track {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .doctor-profile-modal {
+                padding: .7rem;
+            }
+
+            .doctor-profile-panel {
+                width: 100%;
+                max-height: 94vh;
+                border-radius: 17px;
+            }
+
+            .doctor-profile-gallery {
+                padding: .7rem 0;
+            }
+
+            .doctor-gallery-image {
+                width: 170px;
+                height: 145px;
+                flex-basis: 170px;
+            }
+
+            .doctor-profile-content {
+                padding: 1.4rem 1.2rem 1.5rem;
+            }
+
+            .doctor-profile-details {
+                grid-template-columns: 1fr;
+                gap: .75rem;
+            }
+
+            .doctor-profile-actions {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .doctor-profile-book {
+                width: 100%;
+            }
+        }
+
         /* ---------- SERVICES ---------- */
         .services {
-            background: var(--cream);
+            position: relative;
+            background: linear-gradient(180deg, #F7F1E5 0%, var(--cream) 48%, #F5F0E5 100%);
             padding: 7rem 6vw;
+        }
+
+        .services .section-head {
+            max-width: var(--max);
+            margin: 0 auto 2.8rem;
+        }
+
+        .services .section-head h2 {
+            max-width: 720px;
+        }
+
+        .services-intro {
+            max-width: 650px;
+            margin-top: 1rem;
+            color: #54594f;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
         .service-grid {
             max-width: var(--max);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: rgba(22, 51, 43, 0.14);
-            border: 1px solid rgba(22, 51, 43, 0.14);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.1rem;
         }
 
         .service-card {
-            background: var(--paper);
-            padding: 2.6rem 2.2rem;
-            transition: background .35s ease;
+            position: relative;
+            display: flex;
+            min-height: 330px;
+            flex-direction: column;
+            align-items: flex-start;
+            overflow: hidden;
+            padding: 2rem;
+            border: 1px solid rgba(22, 51, 43, 0.1);
+            border-radius: 12px;
+            background: linear-gradient(150deg, rgba(255, 253, 248, 0.98), rgba(255, 253, 248, 0.84));
+            box-shadow: 0 8px 26px rgba(22, 51, 43, 0.045);
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+        }
+
+        .service-card::before {
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            width: 42px;
+            height: 2px;
+            background: var(--gold);
+            content: "";
+            transition: width .3s ease;
         }
 
         .service-card:hover {
-            background: var(--mist);
+            transform: translateY(-5px);
+            border-color: rgba(184, 147, 63, 0.42);
+            background: var(--paper);
+            box-shadow: 0 18px 38px rgba(22, 51, 43, 0.11);
+        }
+
+        .service-card:hover::before {
+            width: calc(100% - 4rem);
         }
 
         .service-card .num {
@@ -783,30 +1212,62 @@
             font-size: 0.7rem;
             color: var(--gold);
             letter-spacing: 0.1em;
+            line-height: 1;
         }
 
         .service-icon {
-            margin: 1.4rem 0 1.2rem;
+            display: grid;
+            width: 54px;
+            height: 54px;
+            place-items: center;
+            margin: 1.25rem 0 1.15rem;
+            border: 1px solid rgba(184, 147, 63, 0.3);
+            border-radius: 50%;
+            background: linear-gradient(145deg, #FBF7EE, #F1E8D5);
         }
 
         .service-icon svg {
-            width: 32px;
-            height: 32px;
+            width: 26px;
+            height: 26px;
             stroke: var(--forest);
         }
 
         .service-card h3 {
-            font-size: 1.18rem;
-            font-weight: 500;
+            font-family: 'Fraunces', serif;
+            font-size: 1.28rem;
+            font-weight: 400;
+            line-height: 1.3;
             color: var(--forest-deep);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.65rem;
         }
 
         .service-card p {
             font-size: 0.9rem;
             color: #54594f;
-            font-weight: 300;
-            line-height: 1.55;
+            font-weight: 400;
+            line-height: 1.75;
+        }
+
+        .service-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: auto;
+            padding-top: 1.35rem;
+            color: #6E5624;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.64rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .service-card__link span {
+            font-size: 1rem;
+            transition: transform .25s ease;
+        }
+
+        .service-card:hover .service-card__link span {
+            transform: translateX(4px);
         }
 
         .service-card {
@@ -841,13 +1302,16 @@
         }
 
         .modal__panel {
-            width: min(680px, 92vw);
-            background: var(--paper);
-            border: 1px solid rgba(22, 51, 43, 0.1);
-            border-radius: 18px;
-            box-shadow: 0 24px 80px rgba(14, 33, 27, 0.3);
-            transform: translateY(18px) scale(0.97);
-            transition: transform 0.28s ease;
+            width: min(760px, 92vw);
+            max-height: min(84vh, 760px);
+            display: flex;
+            flex-direction: column;
+            background: #FFFEFA;
+            border: 1px solid rgba(217, 188, 124, 0.42);
+            border-radius: 22px;
+            box-shadow: 0 30px 100px rgba(4, 17, 12, 0.42);
+            transform: translateY(22px) scale(0.97);
+            transition: transform 0.32s cubic-bezier(0.2, 0.75, 0.25, 1);
             overflow: hidden;
         }
 
@@ -856,153 +1320,242 @@
         }
 
         .modal__header {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            padding: 1.1rem 1.4rem;
-            border-bottom: 1px solid rgba(22, 51, 43, 0.08);
-            background: rgba(239, 233, 218, 0.6);
+            padding: 1.5rem 1.8rem;
+            border-bottom: 1px solid rgba(217, 188, 124, 0.2);
+            background:
+                radial-gradient(circle at 88% 0%, rgba(217, 188, 124, 0.18), transparent 34%),
+                linear-gradient(125deg, #10271F, #1B3C30 72%, #254A38);
+        }
+
+        .modal__header-copy {
+            min-width: 0;
+        }
+
+        .modal__eyebrow {
+            margin-bottom: 0.45rem;
+            color: var(--gold-light);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
         }
 
         .modal__title {
             font-family: 'Fraunces', serif;
-            font-size: clamp(1.5rem, 2vw, 2rem);
-            color: var(--forest-deep);
+            font-size: clamp(1.55rem, 3.2vw, 2.25rem);
+            font-weight: 400;
+            line-height: 1.18;
+            color: var(--paper);
             margin: 0;
+        }
+
+        .modal__number {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            flex: 0 0 48px;
+            place-items: center;
+            border: 1px solid rgba(217, 188, 124, 0.52);
+            border-radius: 50%;
+            color: var(--gold-light);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
         }
 
         .modal__close {
             background: none;
             border: none;
-            font-size: 2rem;
+            font-size: 1.8rem;
             line-height: 1;
-            color: var(--forest-deep);
+            color: var(--paper);
             cursor: pointer;
-            padding: 0.2rem 0.5rem;
+            padding: 0.25rem 0.45rem;
+            border-radius: 50%;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .modal__close:hover {
+            background: rgba(255, 253, 248, 0.12);
+            transform: rotate(90deg);
         }
 
         .modal__body {
-            padding: 1.5rem 1.5rem 1.1rem;
-            max-height: min(68vh, 540px);
+            padding: 1.7rem 1.8rem;
             overflow-y: auto;
         }
 
-        .doctor-gallery-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 210;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            background: rgba(14, 33, 27, 0.78);
-            backdrop-filter: blur(8px);
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.28s ease, visibility 0.28s ease;
-        }
-
-        .doctor-gallery-modal.open {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .doctor-gallery-panel {
-            width: min(1100px, 96vw);
-            max-height: calc(100svh - 3rem);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background: var(--paper);
-            border-radius: 18px;
-            box-shadow: 0 24px 80px rgba(14, 33, 27, 0.35);
-            transform: translateY(18px) scale(0.97);
-            transition: transform 0.28s ease;
-        }
-
-        .doctor-gallery-modal.open .doctor-gallery-panel {
-            transform: translateY(0) scale(1);
-        }
-
-        .doctor-gallery-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            padding: 1.1rem 1.4rem;
-            border-bottom: 1px solid rgba(22, 51, 43, 0.08);
-            background: rgba(239, 233, 218, 0.6);
-        }
-
-        .doctor-gallery-title {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(1.5rem, 2vw, 2rem);
-            color: var(--forest-deep);
-        }
-
-        .doctor-gallery-close {
-            background: none;
-            border: none;
-            font-size: 2rem;
-            line-height: 1;
-            color: var(--forest-deep);
-            cursor: pointer;
-            padding: 0.2rem 0.5rem;
-        }
-
-        .doctor-gallery-grid {
+        .modal__overview {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+            grid-template-columns: 58px minmax(0, 1fr);
+            align-items: start;
             gap: 1rem;
-            padding: 1.25rem;
-            overflow-y: auto;
         }
 
-        .doctor-gallery-grid img {
-            display: block;
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 8px;
-            background: var(--mist);
+        .modal__service-icon {
+            display: grid;
+            width: 58px;
+            height: 58px;
+            place-items: center;
+            border: 1px solid rgba(184, 147, 63, 0.35);
+            border-radius: 16px;
+            background: linear-gradient(145deg, #FBF7EE, #F0E6D1);
         }
 
-        .doc-card {
-            cursor: pointer;
+        .modal__service-icon svg {
+            width: 29px;
+            height: 29px;
+            fill: none;
+            stroke: var(--forest);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
-        .doc-card:focus-visible {
-            outline: 2px solid var(--gold-light);
-            outline-offset: 4px;
-        }
-
-        .modal__eyebrow {
+        .modal__section-label {
+            margin: 0 0 0.55rem;
+            color: #80652D;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.66rem;
-            letter-spacing: 0.12em;
+            font-size: 0.64rem;
+            letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.75rem;
         }
 
         .modal__content {
-            color: #3c443f;
-            font-size: 0.98rem;
-            line-height: 1.7;
+            color: #46504A;
+            font-size: 0.96rem;
+            line-height: 1.8;
         }
 
         .modal__content p {
-            margin-bottom: 0.9rem;
+            margin: 0;
+        }
+
+        .modal__details {
+            margin-top: 1.65rem;
+            padding-top: 1.3rem;
+            border-top: 1px solid rgba(22, 51, 43, 0.1);
         }
 
         .modal__list {
-            margin-top: 1rem;
-            padding-left: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.65rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .modal__list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            min-height: 58px;
+            padding: 0.85rem 0.9rem;
+            border: 1px solid rgba(22, 51, 43, 0.08);
+            border-radius: 10px;
+            background: #F8F5EC;
             color: var(--forest-deep);
-            line-height: 1.9;
+            font-size: 0.85rem;
+            line-height: 1.55;
+        }
+
+        .modal__list li::before {
+            content: "✓";
+            flex: 0 0 auto;
+            color: #8A6B2E;
+            font-weight: 700;
+        }
+
+        .modal__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid rgba(184, 147, 63, 0.2);
+            border-radius: 12px;
+            background: linear-gradient(110deg, #F7F1E5, #FBF8F0);
+        }
+
+        .modal__note {
+            max-width: 360px;
+            color: #5D625B;
+            font-size: 0.78rem;
+            line-height: 1.55;
+        }
+
+        .modal__call {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.78rem 1rem;
+            border: 1px solid var(--forest);
+            border-radius: 999px;
+            background: var(--forest);
+            color: var(--paper);
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        .modal__call:hover {
+            transform: translateY(-2px);
+            background: var(--gold-light);
+            color: var(--forest-deep);
+        }
+
+        @media (max-width: 560px) {
+            .modal {
+                padding: 0.75rem;
+            }
+
+            .modal__panel {
+                width: 100%;
+                max-height: 90vh;
+                border-radius: 18px;
+            }
+
+            .modal__header {
+                padding: 1.2rem;
+                gap: 0.65rem;
+            }
+
+            .modal__number {
+                width: 40px;
+                height: 40px;
+                flex-basis: 40px;
+            }
+
+            .modal__body {
+                padding: 1.25rem;
+            }
+
+            .modal__list {
+                grid-template-columns: 1fr;
+            }
+
+            .modal__list li {
+                min-height: auto;
+            }
+
+            .modal__footer {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .modal__call {
+                width: 100%;
+            }
         }
 
         body.modal-open {
@@ -1349,6 +1902,61 @@
             border: 0;
         }
 
+        /* ---------- WHY CHOOSE KANHA CLINIC ---------- */
+        .why-choose {
+            background: linear-gradient(180deg, #F5F0E5 0%, var(--cream) 100%);
+            padding: 6rem 6vw;
+        }
+
+        .why-choose .section-head {
+            margin-bottom: 2.5rem;
+        }
+
+        .why-choose .section-head h2 {
+            color: var(--forest-deep);
+            max-width: 700px;
+        }
+
+        .why-choose .section-head .eyebrow {
+            color: var(--gold);
+        }
+
+        .why-grid {
+            max-width: var(--max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.1rem;
+        }
+
+        .why-card {
+            padding: 1.8rem;
+            background: rgba(255, 253, 248, 0.72);
+            border: 1px solid rgba(22, 51, 43, 0.1);
+            border-top: 2px solid var(--gold);
+        }
+
+        .why-card-number {
+            color: var(--gold);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+        }
+
+        .why-card h3 {
+            color: var(--forest-deep);
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 1.1rem 0 0.65rem;
+        }
+
+        .why-card p {
+            color: #54594f;
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+
         /* ---------- FOOTER ---------- */
         footer {
             background: var(--forest-deep);
@@ -1413,6 +2021,33 @@
         .float-call svg {
             width: 24px;
             height: 24px;
+        }
+
+        .float-whatsapp {
+            position: fixed;
+            left: 1.8rem;
+            bottom: 1.8rem;
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+            transition: transform .3s ease;
+            touch-action: manipulation;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        .float-whatsapp svg {
+            width: 28px;
+            height: 28px;
         }
 
         /* reveal-on-scroll */
@@ -1878,24 +2513,6 @@
             color: #54594f;
         }
 
-        .vax-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(22, 51, 43, 0.08);
-            font-size: 0.9rem;
-        }
-
-        .vax-status {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.6rem;
-            border-radius: 2px;
-        }
-
         .tool-note {
             font-size: 0.78rem;
             color: #6b7168;
@@ -1903,8 +2520,197 @@
             font-style: italic;
         }
 
+        .vaccine-intro {
+            margin-bottom: 1.5rem;
+            max-width: 760px;
+            color: #54594f;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .vaccine-controls {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 1rem 1.2rem;
+            background: var(--cream);
+            border: 1px solid rgba(22, 51, 43, 0.12);
+            border-radius: 3px;
+        }
+
+        .vaccine-date-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            width: min(100%, 300px);
+        }
+
+        .vaccine-date-field label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #54594f;
+        }
+
+        .vaccine-date-field input {
+            padding: 0.7rem 0.85rem;
+            border: 1px solid rgba(22, 51, 43, 0.22);
+            border-radius: 2px;
+            font: inherit;
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        .vaccine-date-field input:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 1px;
+        }
+
+        .vaccine-date-error {
+            margin: 0;
+            color: #a13d29;
+            font-size: 0.78rem;
+        }
+
+        .vaccine-progress {
+            margin: 0 0 1.2rem;
+            color: var(--forest-deep);
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        .vaccine-progress-count {
+            color: var(--leaf);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .vaccine-groups {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .vaccine-group {
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            border: 1px solid rgba(22, 51, 43, 0.14);
+            border-radius: 3px;
+            background: var(--paper);
+        }
+
+        .vaccine-group legend {
+            margin-left: 0.85rem;
+            padding: 0 0.45rem;
+            color: var(--forest-deep);
+            font-family: 'Fraunces', serif;
+            font-size: 1.08rem;
+        }
+
+        .vaccine-list {
+            display: grid;
+        }
+
+        .vaccine-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border-top: 1px solid rgba(22, 51, 43, 0.08);
+        }
+
+        .vaccine-row-main {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .vaccine-row input[type="checkbox"] {
+            width: 1.15rem;
+            height: 1.15rem;
+            margin: 0.15rem 0 0;
+            flex: 0 0 auto;
+            accent-color: var(--leaf);
+            cursor: pointer;
+        }
+
+        .vaccine-row label {
+            color: var(--forest-deep);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .vaccine-row label span {
+            display: block;
+            margin-top: 0.18rem;
+            color: #73786f;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 400;
+        }
+
+        .vaccine-status {
+            color: #6b7168;
+            font-size: 0.75rem;
+            text-align: right;
+        }
+
+        .vaccine-row.is-complete .vaccine-status {
+            color: #2c6b45;
+            font-weight: 600;
+        }
+
+        .vaccine-row.is-window-passed .vaccine-status {
+            color: #8a6a24;
+        }
+
+        .vaccine-reset {
+            border: 1px solid rgba(22, 51, 43, 0.25);
+            border-radius: 2px;
+            padding: 0.65rem 0.9rem;
+            background: transparent;
+            color: var(--forest-deep);
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .vaccine-reset:hover {
+            background: rgba(22, 51, 43, 0.06);
+        }
+
         .range-scale {
             margin-top: 1.2rem;
+        }
+
+        @media (max-width: 620px) {
+            .vaccine-controls {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .vaccine-date-field {
+                width: 100%;
+            }
+
+            .vaccine-reset {
+                align-self: flex-start;
+            }
+
+            .vaccine-row {
+                grid-template-columns: 1fr;
+                gap: 0.35rem;
+            }
+
+            .vaccine-status {
+                padding-left: 1.9rem;
+                text-align: left;
+            }
         }
 
         .range-track {
@@ -2097,6 +2903,10 @@
                 grid-template-columns: 1fr 1fr;
             }
 
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
             .strip-inner {
                 flex-direction: column;
             }
@@ -2112,9 +2922,9 @@
                 gap: 0.55rem;
             }
 
-            .brand svg {
-                width: 27px;
-                height: 27px;
+            .brand img {
+                width: 38px;
+                height: 38px;
             }
 
             .brand small {
@@ -2125,12 +2935,17 @@
                 grid-template-columns: 1fr;
             }
 
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
             .philosophy,
             .doctors,
             .services,
             .gallery,
             .tools,
-            .visit {
+            .visit,
+            .why-choose {
                 padding-top: 4.5rem;
                 padding-bottom: 5rem;
             }
@@ -2251,6 +3066,13 @@
 
             .float-call {
                 right: 1rem;
+                bottom: calc(1rem + env(safe-area-inset-bottom));
+                width: 54px;
+                height: 54px;
+            }
+
+            .float-whatsapp {
+                left: 1rem;
                 bottom: calc(1rem + env(safe-area-inset-bottom));
                 width: 54px;
                 height: 54px;
@@ -2383,6 +3205,9 @@
             <span></span>
         </div>
         <div class="preloader__content">
+            <img class="preloader__logo"
+                src="https://cdn.phototourl.com/member/2026-11-06-6727806f-6f66-476a-a5e9-d465a7798aba.png"
+                alt="Kanha Clinic logo">
             <div class="preloader__brand">Kanha Clinic</div>
             <div class="preloader__bar"></div>
         </div>
@@ -2391,18 +3216,15 @@
     <!-- NAV -->
     <header class="nav" id="siteNav">
         <a href="#top" class="brand">
-            <svg viewBox="0 0 40 40" fill="none">
-                <path d="M20 6c6 2 11 5 13 11-1 6-6 9-13 12-7-3-12-6-13-12 2-6 7-9 13-11z" stroke="#D9BC7C"
-                    stroke-width="1.2" />
-                <path d="M9 20h5l2-5 3 9 2-6 2 2h7" stroke="#D9BC7C" stroke-width="1.3" stroke-linecap="round"
-                    stroke-linejoin="round" fill="none" />
-            </svg>
+            <img src="https://cdn.phototourl.com/member/2026-11-06-6727806f-6f66-476a-a5e9-d465a7798aba.png"
+                alt="Kanha Clinic logo">
             <span>KANHA CLINIC<small>NAVSARI &nbsp;·&nbsp; EST. FAMILY CARE</small></span>
         </a>
         <nav class="links" id="siteLinks">
             <a href="#philosophy">Philosophy</a>
             <a href="#doctors">Doctors</a>
             <a href="#care">Care</a>
+            <a href="#why-choose">Why Us</a>
             <a href="#visit">Visit</a>
             <a href="#" class="nav-cta" id="openAppointmentModalBtn">Book a Visit</a>
         </nav>
@@ -2417,16 +3239,28 @@
     <!-- HERO -->
     <section class="hero" id="top">
         <div class="hero-photo" id="heroSlider">
-            <img class="hero-slide active" src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Kanha Clinic consultation room in Navsari" loading="eager">
-            <img class="hero-slide" src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Doctor consultation at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Pediatric care consultation at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Preventive healthcare consultation in Navsari" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Family healthcare consultation at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Heart care consultation in Gujarat clinic" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Patient care at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Medical checkup at Kanha Clinic" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Modern family clinic in Navsari" loading="lazy">
-            <img class="hero-slide" src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Doctor and patient care environment at Kanha Clinic" loading="lazy">
+            <img class="hero-slide active" src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg"
+                alt="Kanha Clinic consultation room in Navsari" loading="eager">
+            <img class="hero-slide" src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg"
+                alt="Doctor consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg"
+                alt="Pediatric care consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/C3rGxNQ3/ea62b5b6-354e-482c-8fb3-47da78afb155.jpg"
+                alt="Pediatric care consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg"
+                alt="Preventive healthcare consultation in Navsari" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg"
+                alt="Family healthcare consultation at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg"
+                alt="Heart care consultation in Gujarat clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg"
+                alt="Patient care at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg"
+                alt="Medical checkup at Kanha Clinic" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg"
+                alt="Modern family clinic in Navsari" loading="lazy">
+            <img class="hero-slide" src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg"
+                alt="Doctor and patient care environment at Kanha Clinic" loading="lazy">
         </div>
         <div class="hero-grid">
             <div>
@@ -2434,7 +3268,7 @@
                 <h1>Where every <em>heartbeat</em><br>is heard, and every<br>childhood is <em>held</em>.</h1>
                 <p class="lede">A single clinic, two disciplines. Adult medicine and cardiac care under Dr. Pratik
                     Patel, paediatric care under Dr. Khushbu Patel — one family's health, looked after end to end.</p>
-                <div class="gujarati">તંદુરસ્તી ની સેવા ની હાસ</div>
+                <div class="gujarati">બાળપણ થી ઘડપણ નો સાથી</div>
                 <div class="hero-actions">
                     <a href="tel:+916354192880" class="btn btn-primary">Call to Book — 63541 92880</a>
                     <a href="#doctors" class="btn btn-ghost">Meet the Doctors</a>
@@ -2447,49 +3281,89 @@
     <!-- PHOTO MARQUEE -->
     <section class="photo-marquee" aria-label="Photo gallery of Kanha Clinic">
         <div class="photo-marquee-track">
-            <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="General healthcare visit at Kanha Clinic" loading="lazy">
-            <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Kanha Clinic care and wellness environment" loading="lazy">
-            <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Patient care in clinic" loading="lazy">
-            <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Kanha Clinic interior and reception" loading="lazy">
-            <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Preventive care consultation" loading="lazy">
-            <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Family medicine examination room" loading="lazy">
-            <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Pediatric care at Kanha Clinic" loading="lazy">
-            <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Medical consultation in Navsari" loading="lazy">
-            <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Kanha Clinic patient consultation" loading="lazy">
-            <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Heart and wellness consultation at clinic" loading="lazy">
-            <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic examination and care environment" loading="lazy">
-            <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Modern family clinic in Gujarat" loading="lazy">
-            <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Kanha Clinic healthcare environment" loading="lazy">
-            <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Doctor consultation room at Kanha Clinic" loading="lazy">
-            <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Medical wellness center in Navsari" loading="lazy">
-            <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic hallway and care space" loading="lazy">
-            <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Kanha Clinic patient experience" loading="lazy">
-            <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Health and preventive care environment" loading="lazy">
-            <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Pediatric consultation at clinic" loading="lazy">
-            <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Family doctor consultation area" loading="lazy">
-            
+            <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg"
+                alt="General healthcare visit at Kanha Clinic" loading="lazy">
+            <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg"
+                alt="Kanha Clinic care and wellness environment" loading="lazy">
+            <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Patient care in clinic"
+                loading="lazy">
+            <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg"
+                alt="Kanha Clinic interior and reception" loading="lazy">
+            <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg"
+                alt="Preventive care consultation" loading="lazy">
+            <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg"
+                alt="Family medicine examination room" loading="lazy">
+            <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg"
+                alt="Pediatric care at Kanha Clinic" loading="lazy">
+            <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg"
+                alt="Medical consultation in Navsari" loading="lazy">
+            <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg"
+                alt="Kanha Clinic patient consultation" loading="lazy">
+            <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg"
+                alt="Heart and wellness consultation at clinic" loading="lazy">
+            <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg"
+                alt="Clinic examination and care environment" loading="lazy">
+            <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg"
+                alt="Modern family clinic in Gujarat" loading="lazy">
+            <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg"
+                alt="Kanha Clinic healthcare environment" loading="lazy">
+            <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg"
+                alt="Doctor consultation room at Kanha Clinic" loading="lazy">
+            <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg"
+                alt="Medical wellness center in Navsari" loading="lazy">
+            <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg"
+                alt="Clinic hallway and care space" loading="lazy">
+            <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg"
+                alt="Kanha Clinic patient experience" loading="lazy">
+            <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg"
+                alt="Health and preventive care environment" loading="lazy">
+            <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg"
+                alt="Pediatric consultation at clinic" loading="lazy">
+            <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg"
+                alt="Family doctor consultation area" loading="lazy">
+
             <!-- duplicate set for seamless loop -->
-            <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="" loading="lazy" aria-hidden="true">
-            <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="" loading="lazy" aria-hidden="true">
-            
+            <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+            <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="" loading="lazy"
+                aria-hidden="true">
+
         </div>
     </section>
 
@@ -2570,21 +3444,36 @@
                 <div class="eyebrow">Our Approach</div>
                 <h2>Two specialists.<br>One unhurried standard of care.</h2>
                 <div class="phil-photos" id="approachGallery" aria-label="Clinic care moments">
-                    <div class="approach-card active"><img src="https://picsum.photos/seed/kanha-approach-01/900/700" alt="Clinic consultation setting" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-02/900/700" alt="Doctor consultation" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-03/900/700" alt="Medical health checkup" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-04/900/700" alt="Family care discussion" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-05/900/700" alt="Paediatric care" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-06/900/700" alt="Cardiac screening" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-07/900/700" alt="Clinic waiting area" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-08/900/700" alt="Doctor with patient" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-09/900/700" alt="Health consultation" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-10/900/700" alt="Checkup room" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-11/900/700" alt="Wellness care" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-12/900/700" alt="Clinic environment" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-13/900/700" alt="Patient consultation" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-14/900/700" alt="Health guidance" loading="lazy"></div>
-                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-15/900/700" alt="Family health support" loading="lazy"></div>
+                    <div class="approach-card active"><img src="https://picsum.photos/seed/kanha-approach-01/900/700"
+                            alt="Clinic consultation setting" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-02/900/700"
+                            alt="Doctor consultation" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-03/900/700"
+                            alt="Medical health checkup" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-04/900/700"
+                            alt="Family care discussion" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-05/900/700"
+                            alt="Paediatric care" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-06/900/700"
+                            alt="Cardiac screening" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-07/900/700"
+                            alt="Clinic waiting area" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-08/900/700"
+                            alt="Doctor with patient" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-09/900/700"
+                            alt="Health consultation" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-10/900/700"
+                            alt="Checkup room" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-11/900/700"
+                            alt="Wellness care" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-12/900/700"
+                            alt="Clinic environment" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-13/900/700"
+                            alt="Patient consultation" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-14/900/700"
+                            alt="Health guidance" loading="lazy"></div>
+                    <div class="approach-card"><img src="https://picsum.photos/seed/kanha-approach-15/900/700"
+                            alt="Family health support" loading="lazy"></div>
                 </div>
             </div>
             <div class="phil-copy reveal">
@@ -2614,12 +3503,18 @@
                 <h2>Care led by two named doctors —<br>not a rotating roster.</h2>
             </div>
             <div class="ph" style="width:180px; height:110px; border-radius:3px; flex-shrink:0;">
-                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Kanha Clinic consultation room"
-                    loading="lazy">
+                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg"
+                    alt="Kanha Clinic consultation room" loading="lazy">
             </div>
         </div>
         <div class="doctor-grid">
-            <div class="doc-card reveal" tabindex="0" role="button" aria-haspopup="dialog" data-doctor="Dr. Pratik Patel" data-gallery="pratik">
+            <div class="doc-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
+                aria-controls="doctorProfileModal" aria-expanded="false" data-doctor-gallery="adult"
+                data-doctor-focus="Adult general medicine, diabetes care, and cardiac imaging."
+                data-doctor-bio="Dr. Pratik Patel is a dedicated and accomplished Consultant Physician with specialized expertise in Diabetology and advanced training in Echocardiography. With over two years of clinical experience, he is known for delivering patient-centered, evidence-based care rooted in internal medicine and preventive health. His approach combines medical precision with compassionate communication, ensuring improved health outcomes and patient empowerment."
+                data-doctor-expertise="Internal Medicine: Expert in the diagnosis and comprehensive management of acute and chronic medical conditions.|Diabetology (CPCDM Certified): Skilled in the diagnosis, treatment, and long-term management of diabetes, including complications and lifestyle modifications.|Cardiology: Proficient in performing and interpreting 2D Echocardiography and ECGs; experienced in managing heart failure and cardiovascular risk.|Hypertension &amp; Dyslipidemia: Focused on integrated treatment approaches combining lifestyle counseling with pharmacotherapy.|Thyroid &amp; Endocrine Disorders: Comprehensive care for hormonal imbalances and metabolic disorders.|Infectious Diseases: Management of a wide range of infections including tuberculosis, dengue, and other tropical illnesses.|Geriatric Care &amp; Preventive Medicine: Focused on promoting healthy aging and disease prevention.|Critical Care: Experienced in ICU-based management, emergency response, and patient stabilization.|Health Education &amp; Counseling: Advocates for patient awareness and proactive health behavior through effective communication and education."
+                data-doctor-education="M.B.B.S. — M.P. Shah Medical College, Jamnagar|M.D. (Medicine) — M.P. Shah Medical College, Jamnagar|CPCDM — Certificate Course in Evidence-Based Diabetes Management|Fellowship in Echocardiography"
+                data-doctor-work="Senior Resident, GMERS Medical College &amp; Hospital, Valsad (2023–2024)|Consultant Physician, Rajchandra Hospital, Dharampur (January 2024 – July 2024)">
                 <div class="ph doc-photo"><img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg"
                         alt="Cardiology and internal medicine consultation" loading="lazy"></div>
                 <div class="doc-icon">
@@ -2630,14 +3525,20 @@
                 <div class="role">Internal Medicine &amp; Cardiology</div>
                 <h3>Dr. Pratik Patel</h3>
                 <div class="gj">ડૉ. પ્રતિક પટેલ</div>
+                <p class="doc-card__intro">Consultant Physician with specialized expertise in Diabetology, advanced
+                    Echocardiography training, and over two years of clinical experience.</p>
                 <ul>
                     <li>M.D. Medicine</li>
                     <li>CPCDM — Certified in Clinical Diabetes Management</li>
                     <li>Fellow in Echocardiography</li>
                     <li>Adult general medicine, diabetes care &amp; cardiac imaging</li>
                 </ul>
+                <div class="doctor-card-prompt">View full profile <span aria-hidden="true">→</span></div>
             </div>
-            <div class="doc-card reveal" tabindex="0" role="button" aria-haspopup="dialog" data-doctor="Dr. Khushbu Patel" data-gallery="khushbu">
+            <div class="doc-card reveal" tabindex="0" role="button" aria-haspopup="dialog"
+                aria-controls="doctorProfileModal" aria-expanded="false" data-doctor-gallery="paediatric"
+                data-doctor-focus="Newborn and infant care, childhood illness, vaccination guidance, and growth monitoring."
+                data-doctor-bio="Dr. Khushbu Patel provides paediatric care for newborns, infants, and children, including illness assessment, vaccination guidance, and growth monitoring. Care is centered on each child's needs and supporting families through clear guidance.">
                 <div class="ph doc-photo"><img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg"
                         alt="Paediatric consultation" loading="lazy"></div>
                 <div class="doc-icon">
@@ -2655,17 +3556,54 @@
                     <li>Childhood vaccination &amp; growth monitoring</li>
                     <li>Paediatric illness diagnosis &amp; treatment</li>
                 </ul>
+                <div class="doctor-card-prompt">View full profile <span aria-hidden="true">→</span></div>
             </div>
         </div>
     </section>
 
-    <div class="doctor-gallery-modal" id="doctorGalleryModal" aria-hidden="true">
-        <div class="doctor-gallery-panel" role="dialog" aria-modal="true" aria-labelledby="doctorGalleryTitle">
-            <div class="doctor-gallery-header">
-                <h3 class="doctor-gallery-title" id="doctorGalleryTitle">Doctor photo gallery</h3>
-                <button type="button" class="doctor-gallery-close" id="doctorGalleryClose" aria-label="Close doctor photo gallery">×</button>
+    <div class="doctor-profile-modal" id="doctorProfileModal" aria-hidden="true">
+        <div class="doctor-profile-panel" role="dialog" aria-modal="true" aria-labelledby="doctorProfileName">
+            <div class="doctor-profile-gallery">
+                <button type="button" class="doctor-profile-close" id="doctorProfileClose"
+                    aria-label="Close doctor profile">×</button>
+                <div class="doctor-gallery-viewport" role="region" aria-label="Kanha Clinic photo gallery">
+                    <div class="doctor-gallery-track" id="doctorGalleryTrack"></div>
+                </div>
             </div>
-            <div class="doctor-gallery-grid" id="doctorGalleryGrid"></div>
+            <div class="doctor-profile-content">
+                <div class="doctor-profile-kicker">Meet your physician</div>
+                <h3 class="doctor-profile-name" id="doctorProfileName"></h3>
+                <div class="doctor-profile-gj" id="doctorProfileGujarati"></div>
+                <div class="doctor-profile-role" id="doctorProfileRole"></div>
+                <p class="doctor-profile-bio" id="doctorProfileBio"></p>
+                <div class="doctor-profile-details">
+                    <section class="doctor-profile-detail doctor-profile-detail--wide" id="doctorProfileExpertisePanel"
+                        hidden>
+                        <h4>Areas of expertise</h4>
+                        <ul class="doctor-profile-credentials" id="doctorProfileExpertise"></ul>
+                    </section>
+                    <section class="doctor-profile-detail" id="doctorProfileEducationPanel" hidden>
+                        <h4>Education &amp; training</h4>
+                        <ul class="doctor-profile-credentials" id="doctorProfileEducation"></ul>
+                    </section>
+                    <section class="doctor-profile-detail" id="doctorProfileWorkPanel" hidden>
+                        <h4>Professional work</h4>
+                        <ul class="doctor-profile-credentials" id="doctorProfileWork"></ul>
+                    </section>
+                    <section class="doctor-profile-detail">
+                        <h4>Qualifications &amp; care</h4>
+                        <ul class="doctor-profile-credentials" id="doctorProfileCredentials"></ul>
+                    </section>
+                    <section class="doctor-profile-detail">
+                        <h4>Clinical focus</h4>
+                        <p class="doctor-profile-note" id="doctorProfileFocus"></p>
+                    </section>
+                </div>
+                <div class="doctor-profile-actions">
+                    <p>For appointments and availability, contact Kanha Clinic.</p>
+                    <a class="doctor-profile-book" href="tel:+916354192880">Call to book · 63541 92880</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2673,110 +3611,164 @@
     <section class="services" id="care">
         <div class="section-head reveal">
             <div class="eyebrow">Areas of Care</div>
-            <h2>What we treat, under one roof.</h2>
+            <h2>Thoughtful care for every stage of life.</h2>
+            <p class="services-intro">From everyday consultations to specialist-led heart and child health, explore
+                connected care designed around the person, not just the symptoms. Select a service to see what a visit
+                may include.</p>
         </div>
         <div class="service-grid">
-            <div class="service-card reveal" tabindex="0" role="button" data-title="General &amp; Internal Medicine" data-description="Diagnosis and ongoing management of everyday and chronic adult illness, with a doctor who tracks your history over time." data-points="Personalised adult consultations|Routine chronic care planning|Early detection and follow-up support|Medication review and health tracking">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="General &amp; Internal Medicine"
+                data-description="Personalised assessment for common illnesses and ongoing adult health concerns, with time to understand your symptoms, medical history, and goals. Follow-up supports continuity for chronic conditions and changing health needs."
+                data-points="Personalised adult consultations|Routine chronic care planning|Early detection and follow-up support|Medication review and health tracking">
                 <div class="num">01</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2" stroke-linecap="round" />
+                        <path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"
+                            stroke-linecap="round" />
                         <circle cx="12" cy="12" r="4" />
                     </svg></div>
                 <h3>General &amp; Internal Medicine</h3>
-                <p>Diagnosis and ongoing management of everyday and chronic adult illness, with a doctor who tracks your history over time.</p>
+                <p>Personalised assessment for common illnesses and ongoing adult health concerns, with care that takes
+                    your history, symptoms, and goals into account.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Echocardiography &amp; Cardiac Screening" data-description="Fellowship-trained cardiac imaging for early detection and monitoring of heart conditions, read and explained by Dr. Pratik Patel." data-points="Echocardiography review|Heart rhythm and structure assessment|Early cardiac risk screening|Clear explanation of findings and next steps">
+            <div class="service-card reveal" tabindex="0" role="button"
+                data-title="Echocardiography &amp; Cardiac Screening"
+                data-description="Cardiac assessment and echocardiography review with Dr. Pratik Patel, a Fellow in Echocardiography. Findings are discussed clearly to support understanding, next steps, and follow-up when needed."
+                data-points="Echocardiography review|Heart rhythm and structure assessment|Early cardiac risk screening|Clear explanation of findings and next steps">
                 <div class="num">02</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
                         <path d="M4 12h4l2-7 4 14 2-7h4" stroke-linecap="round" stroke-linejoin="round" />
                     </svg></div>
                 <h3>Echocardiography &amp; Cardiac Screening</h3>
-                <p>Fellowship-trained cardiac imaging for early detection and monitoring of heart conditions, read and explained by Dr. Pratik Patel.</p>
+                <p>Cardiac assessment and echocardiography review with clear explanations of findings and practical
+                    guidance on next steps.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Diabetes Management" data-description="Structured, certified diabetes care from diagnosis through long-term monitoring, medication review, and lifestyle planning." data-points="CPCDM-informed care|Blood sugar and medication review|Lifestyle and diet guidance|Ongoing disease monitoring">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Diabetes Management"
+                data-description="Ongoing support for diabetes care, informed by CPCDM training. Visits can include reviewing glucose records and medicines, discussing daily routines, and planning appropriate follow-up with your doctor."
+                data-points="CPCDM-informed care|Blood sugar and medication review|Lifestyle and diet guidance|Ongoing disease monitoring">
                 <div class="num">03</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
                         <circle cx="12" cy="12" r="8" />
                         <path d="M8 12h8M12 8v8" stroke-linecap="round" />
                     </svg></div>
                 <h3>Diabetes Management</h3>
-                <p>Structured, certified (CPCDM) diabetes care — from initial diagnosis to long-term insulin and lifestyle management plans.</p>
+                <p>Ongoing diabetes support informed by CPCDM training, with glucose and medication reviews plus
+                    practical lifestyle guidance.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Paediatric &amp; Newborn Care" data-description="Complete infant and child healthcare from Dr. Khushbu Patel, with routine reviews, developmental monitoring, and illness support." data-points="Newborn and infant checkups|Childhood illnesses and follow-up|Growth tracking and milestones|Vaccination guidance and care plans">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Paediatric &amp; Newborn Care"
+                data-description="Newborn, infant, and child consultations with Dr. Khushbu Patel, including routine health reviews, assessment of common childhood illnesses, and age-appropriate growth and development follow-up."
+                data-points="Newborn and infant checkups|Childhood illnesses and follow-up|Growth tracking and milestones|Vaccination guidance and care plans">
                 <div class="num">04</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <path d="M12 20c-4-2.4-7-5.6-7-9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 7 4.5C19 14.4 16 17.6 12 20z" />
+                        <path
+                            d="M12 20c-4-2.4-7-5.6-7-9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 7 4.5C19 14.4 16 17.6 12 20z" />
                     </svg></div>
                 <h3>Paediatric &amp; Newborn Care</h3>
-                <p>Complete infant and child healthcare from Dr. Khushbu Patel — routine visits, illness care, and developmental monitoring.</p>
+                <p>Newborn, infant, and child visits for routine reviews, common illnesses, and age-appropriate growth
+                    and development follow-up.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Vaccination &amp; Growth Tracking" data-description="On-schedule immunisation and growth-chart monitoring so progress is documented and never missed." data-points="Routine immunisation planning|Growth monitoring and percentile tracking|Catch-up vaccination advice|Family-focused developmental support">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Vaccination &amp; Growth Tracking"
+                data-description="Support for families in keeping vaccination records up to date and tracking a child's growth over time. Your clinician can review milestones and discuss recommended next steps based on the child's age and history."
+                data-points="Routine immunisation planning|Growth monitoring and percentile tracking|Catch-up vaccination advice|Family-focused developmental support">
                 <div class="num">05</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
                         <path d="M12 4v6l4 2" stroke-linecap="round" />
                         <circle cx="12" cy="12" r="9" />
                     </svg></div>
                 <h3>Vaccination &amp; Growth Tracking</h3>
-                <p>On-schedule immunisation and growth-chart monitoring, so every milestone is recorded and never missed.</p>
+                <p>Keep vaccination records and growth milestones under review, with age-appropriate guidance for your
+                    child's next steps.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Preventive Health Checkups" data-description="Full-family screening packages designed to catch concerns early, for both adults and children." data-points="Routine risk screening|Family-focused care planning|Early detection and lifestyle advice|Long-term prevention strategy">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Preventive Health Checkups"
+                data-description="Preventive reviews for adults and children that help make sense of health history, current concerns, and appropriate screening options. Recommendations are discussed with your clinician and tailored to individual needs."
+                data-points="Routine risk screening|Family-focused care planning|Early detection and lifestyle advice|Long-term prevention strategy">
                 <div class="num">06</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
                         <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" />
                         <circle cx="12" cy="12" r="9" />
                     </svg></div>
                 <h3>Preventive Health Checkups</h3>
-                <p>Full-family screening packages designed to catch concerns early, for both adults and children.</p>
+                <p>Proactive health reviews for adults and children, with screening options and recommendations tailored
+                    to individual needs.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Geriatric Care" data-description="Comprehensive health management for older adults, focusing on comfort, preventive care, and chronic condition support." data-points="Age-appropriate health planning|Chronic disease review|Medication safety checks|Support for quality of life and independence">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Geriatric Care"
+                data-description="Considered health support for older adults, with attention to existing conditions, medicines, comfort, and personal priorities. Care planning can include preventive reviews and follow-up to support wellbeing and independence."
+                data-points="Age-appropriate health planning|Chronic disease review|Medication safety checks|Support for quality of life and independence">
                 <div class="num">07</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
                         <path d="M12 8v4l3 3M2 12a10 10 0 1 0 20 0 10 10 0 0 0-20 0z" stroke-linecap="round" />
                     </svg></div>
                 <h3>Geriatric Care</h3>
-                <p>Comprehensive health management tailored specifically to the needs of the elderly to improve quality of life.</p>
+                <p>Personalised care for older adults that considers chronic conditions, medication reviews, comfort,
+                    and independence.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Asthma &amp; Allergy Care" data-description="Diagnostic evaluation and long-term care plans for chronic allergies, asthma, and respiratory conditions." data-points="Symptom review and triggers|Walk-through treatment planning|Respiratory condition management|Follow-up to keep symptoms controlled">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Asthma &amp; Allergy Care"
+                data-description="Assessment of asthma, allergy, and respiratory symptoms, including a discussion of possible triggers and their effect on daily life. Your clinician can help plan appropriate treatment and review symptoms over time."
+                data-points="Symptom review and triggers|Walk-through treatment planning|Respiratory condition management|Follow-up to keep symptoms controlled">
                 <div class="num">08</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <path d="M4 19V5a2 2 0 0 1 2-2h13.4a2 2 0 0 1 2 2v14M8 2v4M16 2v4M4 10h16M9 14l2 2 4-4" stroke-linecap="round" />
+                        <path d="M4 19V5a2 2 0 0 1 2-2h13.4a2 2 0 0 1 2 2v14M8 2v4M16 2v4M4 10h16M9 14l2 2 4-4"
+                            stroke-linecap="round" />
                     </svg></div>
                 <h3>Asthma &amp; Allergy Care</h3>
-                <p>Diagnostic evaluation and long-term care plans for chronic allergies, asthma, and respiratory conditions.</p>
+                <p>Review respiratory and allergy symptoms, discuss potential triggers, and plan suitable treatment and
+                    follow-up.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Diet &amp; Nutrition Counseling" data-description="Personalised guidance on food habits, metabolic control, and long-term lifestyle improvements for better health outcomes." data-points="Meal planning support|Weight and blood sugar guidance|Cardiac and diabetic nutrition advice|Sustainable habit building">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Diet &amp; Nutrition Counseling"
+                data-description="Practical nutrition conversations that take your health goals, food habits, and medical needs into account. Guidance may support weight, blood sugar, or heart-health plans alongside care from your clinician."
+                data-points="Meal planning support|Weight and blood sugar guidance|Cardiac and diabetic nutrition advice|Sustainable habit building">
                 <div class="num">09</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" />
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+                            stroke-linecap="round" />
                     </svg></div>
                 <h3>Diet &amp; Nutrition Counseling</h3>
-                <p>Personalized advice and meal planning to complement treatment protocols for diabetes and cardiovascular disease.</p>
+                <p>Practical food and meal-planning guidance shaped around your health goals and clinical care plan.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Minor Surgical Procedures" data-description="Basic, safe, in-clinic procedures including wound care, suturing, and abscess drainage without hospital visits." data-points="Minor wound and abscess care|Simple procedural support|Low-disruption same-day treatment|Follow-up based recovery planning">
+            <div class="service-card reveal" tabindex="0" role="button"
+                data-title="Blood Pressure &amp; Hypertension Care"
+                data-description="Blood pressure assessment and ongoing hypertension care, with results discussed in the context of your health history. Your clinician can advise on monitoring, medication review, lifestyle considerations, and appropriate follow-up."
+                data-points="Blood pressure checks and review|Personalised hypertension care planning|Medication and lifestyle guidance|Ongoing monitoring and follow-up">
                 <div class="num">10</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <circle cx="12" cy="12" r="10" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                        <path d="M3 12h4l2-6 4 12 2-6h6" stroke-linecap="round" stroke-linejoin="round" />
                     </svg></div>
-                <h3>Minor Surgical Procedures</h3>
-                <p>Basic, safe, in-clinic procedures including wound care, suturing, and abscess drainage without hospital visits.</p>
+                <h3>Blood Pressure &amp; Hypertension Care</h3>
+                <p>Blood pressure checks and ongoing review, with personalised guidance on monitoring and follow-up.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Women's Health Follow-up" data-description="Regular assessment and ongoing support for women’s health concerns, from routine screening to preventive counselling." data-points="Routine review and screening|Preventive health checkups|Personalised follow-up support|Guidance on long-term wellness planning">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Women's Health Follow-up"
+                data-description="A supportive setting to discuss women's health concerns, preventive screening, and suitable follow-up. Recommendations are guided by your history, current needs, and a conversation with your clinician."
+                data-points="Routine review and screening|Preventive health checkups|Personalised follow-up support|Guidance on long-term wellness planning">
                 <div class="num">11</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <path d="M12 21s-6-4-6-9a3.5 3.5 0 0 1 6-2.2A3.5 3.5 0 0 1 18 12c0 5-6 9-6 9z" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 21s-6-4-6-9a3.5 3.5 0 0 1 6-2.2A3.5 3.5 0 0 1 18 12c0 5-6 9-6 9z"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg></div>
                 <h3>Women's Health Follow-up</h3>
-                <p>Regular assessment and ongoing support for women’s health concerns, from routine screening to preventive counselling.</p>
+                <p>Discuss women's health concerns, preventive screening, and follow-up options with your clinician.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
-            <div class="service-card reveal" tabindex="0" role="button" data-title="Lifestyle &amp; Wellness Counseling" data-description="Practical guidance on diet, rest, exercise, stress, and daily habits that supports long-term health improvements." data-points="Diet and routine planning|Stress and sleep guidance|Exercise and movement advice|Safe habits for sustained health improvement">
+            <div class="service-card reveal" tabindex="0" role="button" data-title="Lifestyle &amp; Wellness Counseling"
+                data-description="Realistic conversations about everyday habits—such as food, movement, rest, and stress—that can support your broader care goals. Guidance is tailored to your routine and health needs, with practical steps to discuss and review."
+                data-points="Diet and routine planning|Stress and sleep guidance|Exercise and movement advice|Safe habits for sustained health improvement">
                 <div class="num">12</div>
                 <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4">
-                        <path d="M4 18V6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5V18M8 8h8M8 12h8M8 16h5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M4 18V6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5V18M8 8h8M8 12h8M8 16h5"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg></div>
                 <h3>Lifestyle &amp; Wellness Counseling</h3>
-                <p>Practical guidance on diet, rest, exercise, stress, and daily habits that supports long-term health improvements.</p>
+                <p>Practical, personalised conversations about food, movement, rest, and stress to support everyday
+                    wellbeing.</p>
+                <span class="service-card__link">Explore care details <span aria-hidden="true">→</span></span>
             </div>
         </div>
     </section>
@@ -2784,14 +3776,33 @@
     <div class="modal" id="serviceModal" aria-hidden="true">
         <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="serviceModalTitle">
             <div class="modal__header">
-                <h3 class="modal__title" id="serviceModalTitle">Service Details</h3>
-                <button type="button" class="modal__close" id="serviceModalClose" aria-label="Close service details">×</button>
+                <div class="modal__header-copy">
+                    <div class="modal__eyebrow">Personalised care at Kanha Clinic</div>
+                    <h3 class="modal__title" id="serviceModalTitle">Service Details</h3>
+                </div>
+                <span class="modal__number" id="serviceModalNumber" aria-hidden="true">01</span>
+                <button type="button" class="modal__close" id="serviceModalClose"
+                    aria-label="Close service details">×</button>
             </div>
             <div class="modal__body">
-                <div class="modal__eyebrow">Care at Kanha Clinic</div>
-                <div class="modal__content">
-                    <p id="serviceModalText"></p>
+                <div class="modal__overview">
+                    <div class="modal__service-icon" id="serviceModalIcon" aria-hidden="true"></div>
+                    <div class="modal__content">
+                        <div class="modal__section-label">A considered approach to your care</div>
+                        <p id="serviceModalText"></p>
+                    </div>
+                </div>
+                <div class="modal__details">
+                    <div class="modal__section-label">Care may include</div>
                     <ul class="modal__list" id="serviceModalList"></ul>
+                </div>
+                <div class="modal__footer">
+                    <p class="modal__note">Your clinician will recommend the right care and follow-up based on your
+                        individual needs.</p>
+                    <a class="modal__call" href="tel:+916354192880">
+                        <span aria-hidden="true">☎</span>
+                        Call to book
+                    </a>
                 </div>
             </div>
         </div>
@@ -2811,7 +3822,8 @@
                     <input id="patientPhone" name="phone" type="tel" placeholder="Enter your mobile number" required>
 
                     <label for="patientAddress">Address</label>
-                    <textarea id="patientAddress" name="address" rows="3" placeholder="Enter your address" required></textarea>
+                    <textarea id="patientAddress" name="address" rows="3" placeholder="Enter your address"
+                        required></textarea>
 
                     <div class="patient-modal__actions">
                         <button type="button" class="patient-modal__cancel" id="patientModalCancel">Cancel</button>
@@ -2872,11 +3884,13 @@
 
                     <div class="appointment-modal__field appointment-modal__field--full">
                         <label for="appointmentMessage">Message</label>
-                        <textarea id="appointmentMessage" name="message" rows="3" placeholder="Tell us a little about your concern"></textarea>
+                        <textarea id="appointmentMessage" name="message" rows="3"
+                            placeholder="Tell us a little about your concern"></textarea>
                     </div>
 
                     <div class="appointment-modal__actions">
-                        <button type="button" class="appointment-modal__cancel" id="appointmentModalCancel">Cancel</button>
+                        <button type="button" class="appointment-modal__cancel"
+                            id="appointmentModalCancel">Cancel</button>
                         <button type="submit" class="appointment-modal__submit">Send on WhatsApp</button>
                     </div>
                 </form>
@@ -2917,8 +3931,13 @@
         }
 
         @keyframes preloadingMarqueeMove {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 0.75rem)); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 0.75rem));
+            }
         }
 
         .preloading-marquee-img {
@@ -2927,13 +3946,13 @@
             object-fit: cover;
             border-radius: 8px;
             flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .preloading-marquee-img:hover {
             transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
         }
     </style>
     <section class="image-marquee" id="image-marquee">
@@ -2941,48 +3960,88 @@
             <div class="preloading-marquee-track">
                 <!-- Set 1 (20 images) -->
                 <!-- Set 1 (20 images) -->
-                <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
 
                 <!-- Set 2 for infinite scroll -->
-                <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
-                <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Clinic Highlights" class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
+                <img src="https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg" alt="Clinic Highlights"
+                    class="preloading-marquee-img" loading="lazy">
             </div>
         </div>
     </section>
@@ -2991,7 +4050,7 @@
     <section class="tools" id="health-tools">
         <div class="section-head reveal">
             <div class="eyebrow">Health Tools</div>
-            <h2>Six quick checks, from the same guidelines<br>our doctors use in the room.</h2>
+            <h2>Health checks and a practical vaccination tracker.</h2>
         </div>
         <div class="tools-disclaimer reveal">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
@@ -3155,40 +4214,13 @@
                 </div>
             </div>
 
-            <!-- TOOL 5: Vaccination Schedule -->
-            <div class="tool-card" id="tool-vax">
-                <button class="tool-head" onclick="toggleTool('tool-vax')">
-                    <div class="tool-thumb ph light"><img src="https://picsum.photos/seed/kanha-33/120/120" alt="">
-                    </div>
-                    <div class="tool-head-text">
-                        <div class="tool-eyebrow">Tool 05 — Paediatrics</div>
-                        <h3>Vaccination Schedule Planner</h3>
-                    </div>
-                    <div class="tool-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                            <path d="M12 5v14M5 12h14" stroke-linecap="round" />
-                        </svg></div>
-                </button>
-                <div class="tool-body">
-                    <div class="tool-body-inner">
-                        <div class="field-row">
-                            <div class="field"><label for="vax-dob">Child's Date of Birth</label><input type="date"
-                                    id="vax-dob"></div>
-                        </div>
-                        <button class="tool-calc-btn" data-calc="calcVax">Show Schedule</button>
-                        <div class="tool-result" id="vax-result"></div>
-                        <div class="tool-note">Reference schedule follows India's national immunisation guidelines.
-                            Please confirm exact timing and any catch-up doses with Dr. Khushbu Patel.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TOOL 6: Blood Pressure -->
+            <!-- TOOL 5: Blood Pressure -->
             <div class="tool-card" id="tool-bp">
                 <button class="tool-head" onclick="toggleTool('tool-bp')">
                     <div class="tool-thumb ph light"><img src="https://picsum.photos/seed/kanha-34/120/120" alt="">
                     </div>
                     <div class="tool-head-text">
-                        <div class="tool-eyebrow">Tool 06 — Cardiology</div>
+                        <div class="tool-eyebrow">Tool 05 — Cardiology</div>
                         <h3>Blood Pressure Category Checker</h3>
                     </div>
                     <div class="tool-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
@@ -3208,6 +4240,49 @@
                         <div class="tool-note">Categories follow standard adult blood pressure guidelines. A single
                             reading is not conclusive — blood pressure should be checked on more than one occasion.
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOL 06: Vaccination Tracker -->
+            <div class="tool-card" id="tool-vaccines">
+                <button class="tool-head" onclick="toggleTool('tool-vaccines')" aria-expanded="false"
+                    aria-controls="vaccine-tracker-body">
+                    <div class="tool-thumb ph light"><img src="https://picsum.photos/seed/kanha-vaccine/120/120" alt=""
+                            loading="lazy"></div>
+                    <div class="tool-head-text">
+                        <div class="tool-eyebrow">Tool 06 — Family Health</div>
+                        <h3>Vaccination Schedule &amp; Check-off Tracker</h3>
+                    </div>
+                    <div class="tool-chevron"><svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                        </svg></div>
+                </button>
+                <div class="tool-body" id="vaccine-tracker-body">
+                    <div class="tool-body-inner">
+                        <p class="vaccine-intro">Use the checkboxes to keep a temporary on-page checklist. Add a date of
+                            birth to see the schedule dates and age windows for the vaccines listed below.</p>
+                        <div class="vaccine-controls">
+                            <div class="vaccine-date-field">
+                                <label for="vaccine-child-dob">Child's date of birth (optional)</label>
+                                <input type="date" id="vaccine-child-dob" autocomplete="off">
+                                <p class="vaccine-date-error" id="vaccine-dob-error" role="alert"></p>
+                            </div>
+                            <button class="vaccine-reset" id="vaccine-reset" type="button">Clear all checkmarks</button>
+                        </div>
+                        <button class="tool-calc-btn" data-calc="calcVaccination" type="button">Generate Vaccination
+                            Tracker PDF</button>
+                        <p class="vaccine-progress" id="vaccine-progress" role="status" aria-live="polite">
+                            <span class="vaccine-progress-count" id="vaccine-progress-count">0 of 39</span> items marked
+                            complete
+                        </p>
+                        <div class="vaccine-groups" id="vaccine-groups"></div>
+                        <p class="tool-note">This list reproduces the schedule and vaccine names supplied for this
+                            tracker, including repeated or differently styled entries. It is not a verified or
+                            individualized recommendation. Vaccine schedules can vary by clinical history and
+                            guidance; confirm the appropriate vaccines, timing, and any catch-up plan with your
+                            child's clinician. A checkmark is only a personal reminder, not a medical record. Checkmarks
+                            and the date of birth are kept in this page only and clear when you reload it.</p>
                     </div>
                 </div>
             </div>
@@ -3276,6 +4351,32 @@
         </div>
     </section>
 
+    <!-- WHY CHOOSE KANHA CLINIC -->
+    <section class="why-choose" id="why-choose">
+        <div class="section-head">
+            <div class="eyebrow">Why Kanha Clinic</div>
+            <h2>Thoughtful care for every stage of life.</h2>
+        </div>
+        <div class="why-grid">
+            <article class="why-card reveal">
+                <div class="why-card-number">01 / FAMILY CARE</div>
+                <h3>Care for the whole family</h3>
+                <p>From children's health to everyday family medicine, find care for the people who matter most.</p>
+            </article>
+            <article class="why-card reveal">
+                <div class="why-card-number">02 / PREVENTION</div>
+                <h3>Look after tomorrow</h3>
+                <p>Preventive checkups and heart health guidance can help you make informed choices about your
+                    wellbeing.</p>
+            </article>
+            <article class="why-card reveal">
+                <div class="why-card-number">03 / PERSONAL CARE</div>
+                <h3>Guidance that feels personal</h3>
+                <p>Get clear, compassionate guidance to help you understand your concerns and take your next step.</p>
+            </article>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <div class="foot-photo"><img src="https://picsum.photos/seed/kanha-40/1600/400" alt="" loading="lazy"></div>
@@ -3290,6 +4391,14 @@
             <div class="fine">306, THE WORLD, GANDEVI ROAD · 63541 92880 · KANHACLINICNAVSARI@GMAIL.COM</div>
         </div>
     </footer>
+
+    <a href="https://wa.me/916354192880" class="float-whatsapp" aria-label="Chat with Kanha Clinic on WhatsApp"
+        target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+                d="M12.04 2a9.9 9.9 0 0 0-8.51 14.96L2 22l5.2-1.36A9.93 9.93 0 1 0 12.04 2Zm0 18.1a8.17 8.17 0 0 1-4.17-1.14l-.3-.18-3.09.81.83-3.01-.2-.31A8.16 8.16 0 1 1 12.04 20.1Zm4.48-6.12c-.25-.13-1.48-.73-1.71-.81-.23-.08-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.15-.25-.02-.39.11-.52.11-.11.25-.3.38-.44.13-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.13-.57-1.37-.78-1.88-.2-.49-.41-.42-.57-.43h-.49c-.17 0-.44.06-.67.32-.23.25-.88.86-.88 2.1s.9 2.43 1.03 2.6c.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.17 1.58.1.48-.07 1.48-.61 1.69-1.2.21-.59.21-1.09.15-1.2-.06-.11-.23-.17-.48-.3Z" />
+        </svg>
+    </a>
 
     <a href="tel:+916354192880" class="float-call" aria-label="Call Kanha Clinic">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -3461,7 +4570,6 @@
                 calcIDRS: 'idrs-result',
                 calcHR: 'hr-result',
                 calcGrowth: 'growth-result',
-                calcVax: 'vax-result',
                 calcBP: 'bp-result'
             };
 
@@ -3473,242 +4581,343 @@
             return plainText.replace(/\s+/g, ' ').trim() || 'Personalized wellness assessment completed successfully.';
         }
 
-        function generatePremiumReport(patientInfo, calcName) {
-            if (!window.jspdf || !window.jspdf.jsPDF) return;
+        async function generatePremiumReport(patientInfo, calcName) {
+            if (!window.jspdf || !window.jspdf.jsPDF) {
+                window.alert('The PDF report could not be created because the PDF library is unavailable. Please reload the page and try again.');
+                return;
+            }
+
+            let logoData;
+            try {
+                const response = await fetch('https://i.ibb.co/gbLB6Yp2/ac96f93a-d036-4235-9590-352e28674225.jpg', { mode: 'cors' });
+                if (!response.ok) throw new Error(`Logo request failed with status ${response.status}.`);
+                const logoBlob = await response.blob();
+                if (!['image/jpeg', 'image/png'].includes(logoBlob.type.toLowerCase())) {
+                    throw new Error(`Unsupported logo image type: ${logoBlob.type || 'unknown'}.`);
+                }
+                const logoDataUrl = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = () => reject(new Error('The clinic logo could not be read for the PDF.'));
+                    reader.readAsDataURL(logoBlob);
+                });
+                const logoImage = new Image();
+                logoImage.src = logoDataUrl;
+                await logoImage.decode();
+                logoData = {
+                    dataUrl: logoDataUrl,
+                    format: logoBlob.type.toLowerCase() === 'image/png' ? 'PNG' : 'JPEG',
+                    width: logoImage.naturalWidth,
+                    height: logoImage.naturalHeight
+                };
+            } catch (error) {
+                console.error('Kanha Clinic PDF logo could not be loaded.', error);
+                window.alert('The PDF report could not be created because the Kanha Clinic logo was unavailable. Check your internet connection and try again.');
+                return;
+            }
 
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-
-            const toolLabelMap = {
-                calcBMI: 'BMI Assessment Report',
-                calcIDRS: 'Diabetes Risk Assessment Report',
-                calcHR: 'Heart Rate Zone Report',
-                calcGrowth: 'Child Growth Report',
-                calcVax: 'Vaccination Schedule Report',
-                calcBP: 'Blood Pressure Report'
-            };
-
-            const toolLabel = toolLabelMap[calcName] || 'Premium Health Assessment Report';
-            const createdOn = new Date().toLocaleDateString('en-IN', {
-                day: '2-digit', month: 'short', year: 'numeric'
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 18;
+            const contentWidth = pageWidth - margin * 2;
+            const pageBottom = pageHeight - 29;
+            const createdOn = new Date().toLocaleString('en-IN', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
             });
-            const resultSummary = getToolResultSummary(calcName);
+            const toolConfig = {
+                calcBMI: {
+                    label: 'BMI & Healthy Weight Assessment',
+                    toolId: 'tool-bmi',
+                    resultId: 'bmi-result',
+                    method: 'BMI is calculated as weight in kilograms divided by height in metres squared. The on-page calculator applies the Asian-population screening cut-offs described with the tool.',
+                    interpretation: 'Use the displayed category and healthy-weight range as screening references, not individual treatment targets. BMI does not distinguish muscle from fat or show fat distribution.',
+                    actionPlan: 'Confirm height and weight measurements, then discuss the result alongside waist measurement, medical history, medicines, and other cardiometabolic risk factors. Agree on realistic, sustainable nutrition and activity goals with a clinician.',
+                    questions: 'Ask whether the BMI category is appropriate for your age and health context, whether additional measurements or tests are useful, and what follow-up interval makes sense.',
+                    note: 'BMI has limitations and can be less informative in pregnancy, children, people with high muscle mass, and some older adults or people with chronic conditions.'
+                },
+                calcIDRS: {
+                    label: 'Indian Diabetes Risk Assessment',
+                    toolId: 'tool-idrs',
+                    resultId: 'idrs-result',
+                    method: 'The Indian Diabetes Risk Score uses the age, waist circumference, physical activity, and family-history responses entered above to estimate screening risk.',
+                    interpretation: 'The score and risk band shown in the assessment help identify whether diabetes screening should be discussed. IDRS cannot determine blood glucose or diagnose diabetes.',
+                    actionPlan: 'Review the score with a clinician, especially when there is a family history, increased waist circumference, or other risk factors. Discuss whether fasting blood glucose or HbA1c testing is appropriate.',
+                    questions: 'Ask which screening test is suitable, when to repeat it, and which lifestyle changes are realistic for your routine and overall health.',
+                    note: 'This score is based on the responses entered and does not replace a glucose test or a complete clinical risk assessment.'
+                },
+                calcHR: {
+                    label: 'Target Heart Rate Zone Assessment',
+                    toolId: 'tool-hr',
+                    resultId: 'hr-result',
+                    method: 'Estimated maximum heart rate is calculated as 220 minus age. When a resting heart rate between 31 and 119 bpm is supplied, zones use the Karvonen heart-rate-reserve method; otherwise, they use percentages of estimated maximum heart rate.',
+                    interpretation: 'Treat these ranges as general exercise estimates rather than required targets. Perceived effort, fitness, environmental conditions, symptoms, and medicines can all affect a safe workout intensity.',
+                    actionPlan: 'Start activity gradually and use a comfortable effort level. Stop exercising and seek appropriate medical advice if you experience concerning symptoms; obtain individualized guidance before vigorous exercise if you have a known condition or take heart-rate-affecting medicines.',
+                    questions: 'Ask what intensity is appropriate for your current fitness and medical history, whether any medicines affect heart rate, and how to progress activity safely.',
+                    note: 'Age-based heart-rate estimates are not a substitute for an individualized exercise prescription or assessment of symptoms and medical history.'
+                },
+                calcGrowth: {
+                    label: 'Child Growth Reference Assessment',
+                    toolId: 'tool-growth',
+                    resultId: 'growth-result',
+                    method: 'The on-page tool compares entered height and weight with sex-specific reference values at selected ages from birth through 60 months, using linear interpolation between those age points. It reports differences from the reference values; these are not percentiles or a clinical growth-chart assessment.',
+                    interpretation: 'A single height or weight measurement cannot establish whether growth is healthy. Age, measurement technique, previous measurements, and the reference standard all matter.',
+                    actionPlan: 'Bring this report and the child’s previous growth records to a paediatric clinician. Confirm measurements with appropriate equipment and review the pattern over time alongside nutrition, development, and medical history.',
+                    questions: 'Ask whether the measurements should be plotted on an age- and sex-appropriate growth chart, when to remeasure, and whether any further assessment is indicated.',
+                    note: 'This browser-based result is a reference aid only; a clinician should confirm the measurement and interpret the child’s growth trajectory.'
+                },
+                calcBP: {
+                    label: 'Blood Pressure Category Assessment',
+                    toolId: 'tool-bp',
+                    resultId: 'bp-result',
+                    method: 'The displayed category is based on the systolic and diastolic values entered. The actual reading and category from the assessment are included below.',
+                    interpretation: 'One reading is only a snapshot and can be affected by activity, stress, cuff fit, posture, and measurement technique. Diagnosis and treatment decisions require appropriate clinical review.',
+                    actionPlan: 'If appropriate, repeat the measurement after resting quietly, with a correctly sized cuff and arm supported at heart level. Keep a record of repeated readings and share it with a clinician. Seek urgent medical care for severe or concerning symptoms.',
+                    questions: 'Ask how and when to repeat measurements, whether home monitoring is suitable, and how your overall health and medicines affect interpretation.',
+                    note: 'This screening category is not a diagnosis. Do not start, stop, or change medicines based only on this report.'
+                },
+                calcVaccination: {
+                    label: 'Vaccination Schedule & Check-off Tracker',
+                    toolId: 'tool-vaccines',
+                    isVaccinationTracker: true,
+                    method: 'This report reproduces the 39 vaccine entries and age labels entered into the on-page tracker. Where a date of birth is provided, target dates are estimated by adding the listed age to that date.',
+                    interpretation: 'A checked box is a user-entered reminder only and does not confirm that a vaccine was administered. Unchecked items are not a clinical determination that a vaccine is due or overdue.',
+                    actionPlan: 'Compare this checklist with the child’s official immunization record and discuss the appropriate schedule, prior doses, product choices, timing, and any catch-up plan with the child’s clinician.',
+                    questions: 'Ask which entries apply to the child, whether prior doses are documented, what timing is appropriate now, and when to schedule the next visit.',
+                    note: 'The vaccine names and schedule shown were supplied for this tracker and have not been independently verified as a current, complete, or individualized recommendation. Repeated entries are retained as provided.'
+                }
+            };
+            const config = toolConfig[calcName];
+            const resultElement = config && config.resultId ? document.getElementById(config.resultId) : null;
+            const missingAssessment = !config || (config.isVaccinationTracker
+                ? !Array.isArray(vaccineSchedule) || !vaccineSchedule.length
+                : !resultElement || !resultElement.classList.contains('show')
+                || !resultElement.querySelector('.result-big, .result-tag, .mini-stat'));
+            if (missingAssessment) {
+                window.alert(config?.isVaccinationTracker
+                    ? 'The vaccination checklist is unavailable. Reload the page and try again.'
+                    : 'Enter valid health check details and complete the assessment before generating its PDF report.');
+                return;
+            }
+            if (config.isVaccinationTracker && vaccineDob.value
+                && new Date(`${vaccineDob.value}T00:00:00`) > todayStart) {
+                vaccineDobError.textContent = 'Please choose a date of birth that is today or earlier.';
+                vaccineDob.setAttribute('aria-invalid', 'true');
+                window.alert('Enter a valid date of birth before generating the vaccination tracker PDF.');
+                return;
+            }
 
-            function addHeader() {
+            let y = 61;
+
+            function drawPageHeader() {
                 doc.setFillColor(17, 35, 30);
-                doc.rect(0, 0, 210, 58, 'F');
-
-                doc.setTextColor(255, 255, 255);
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(24);
-                doc.text('Kanha Clinic', 18, 22);
-
-                doc.setFont('helvetica', 'normal');
-                doc.setFontSize(10);
-                doc.text('Luxury Preventive Care • Advanced Wellness Review', 18, 31);
-
+                doc.rect(0, 0, pageWidth, 43, 'F');
+                const logoBoxWidth = 22;
+                const logoBoxHeight = 24;
+                const logoScale = Math.min(logoBoxWidth / logoData.width, logoBoxHeight / logoData.height);
+                const logoWidth = logoData.width * logoScale;
+                const logoHeight = logoData.height * logoScale;
+                const logoX = margin + (logoBoxWidth - logoWidth) / 2;
+                const logoY = 5 + (logoBoxHeight - logoHeight) / 2;
+                doc.addImage(logoData.dataUrl, logoData.format, logoX, logoY, logoWidth, logoHeight);
+                const brandX = margin + logoBoxWidth + 5;
+                doc.setTextColor(255, 253, 248);
+                doc.setFontSize(19);
+                doc.text('KANHA CLINIC', brandX, 17);
                 doc.setTextColor(217, 188, 124);
-                doc.setFont('helvetica', 'bold');
-                doc.text(patientInfo.name, 18, 44);
-
-                doc.setTextColor(255, 255, 255);
                 doc.setFont('helvetica', 'normal');
-                doc.text(createdOn, 18, 51);
-
+                doc.setFontSize(8);
+                doc.text('NAVSARI  |  PERSONALIZED HEALTH ASSESSMENT', brandX, 24);
+                doc.setTextColor(255, 253, 248);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(10);
+                doc.text(doc.splitTextToSize(config.label, contentWidth), margin, 36);
                 doc.setDrawColor(217, 188, 124);
-                doc.setLineWidth(0.8);
-                doc.line(18, 61, 192, 61);
+                doc.setLineWidth(0.65);
+                doc.line(margin, 48, pageWidth - margin, 48);
+                y = 58;
             }
 
-            function addCard(x, y, w, h, title, lines) {
-                doc.setFillColor(248, 243, 235);
-                doc.roundedRect(x, y, w, h, 4, 4, 'F');
-                doc.setDrawColor(217, 188, 124);
-                doc.setLineWidth(0.4);
-                doc.roundedRect(x, y, w, h, 4, 4, 'S');
-                doc.setTextColor(17, 35, 30);
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(11);
-                doc.text(title, x + 6, y + 10);
-                doc.setFont('helvetica', 'normal');
-                doc.setFontSize(9.5);
-                let lineY = y + 20;
-                lines.forEach((line) => {
-                    const wrapped = doc.splitTextToSize(line, w - 14);
-                    doc.text(wrapped, x + 6, lineY);
-                    lineY += wrapped.length * 5;
+            function ensureSpace(height) {
+                if (y + height > pageBottom) {
+                    doc.addPage();
+                    drawPageHeader();
+                }
+            }
+
+            function addSection(title, text, options) {
+                const settings = options || {};
+                const fontSize = settings.fontSize || 9.5;
+                const lineHeight = settings.lineHeight || 4.8;
+                const lines = String(text || '')
+                    .split(/\r?\n/)
+                    .flatMap((line) => line.trim() ? doc.splitTextToSize(line.trim(), contentWidth - 14) : ['']);
+                const maxLines = Math.max(1, Math.floor((pageBottom - 70) / lineHeight));
+                let remainingLines = lines.length ? lines : ['Not available.'];
+                let isFirstChunk = true;
+
+                while (remainingLines.length) {
+                    const availableLines = Math.max(1, Math.floor((pageBottom - y - 18) / lineHeight));
+                    if (availableLines < 2) {
+                        doc.addPage();
+                        drawPageHeader();
+                        continue;
+                    }
+
+                    const chunkSize = Math.min(remainingLines.length, availableLines, maxLines);
+                    const chunk = remainingLines.splice(0, chunkSize);
+                    const boxHeight = 14 + chunk.length * lineHeight;
+                    ensureSpace(boxHeight + 5);
+                    doc.setFillColor(249, 246, 238);
+                    doc.setDrawColor(220, 207, 175);
+                    doc.setLineWidth(0.3);
+                    doc.roundedRect(margin, y, contentWidth, boxHeight, 3, 3, 'FD');
+                    doc.setTextColor(128, 101, 45);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(8);
+                    const sectionTitle = isFirstChunk ? title : `${title} (continued)`;
+                    doc.text(sectionTitle, margin + 6, y + 7);
+                    doc.setTextColor(35, 44, 38);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(fontSize);
+                    doc.text(chunk, margin + 6, y + 13);
+                    y += boxHeight + 5;
+                    isFirstChunk = false;
+                }
+            }
+
+            function getInputRows() {
+                if (config.isVaccinationTracker) {
+                    const dateOfBirth = document.getElementById('vaccine-child-dob').value;
+                    return [`Child's date of birth: ${dateOfBirth || 'Not provided'}`];
+                }
+                return Array.from(document.querySelectorAll(`#${config.toolId} .field`))
+                    .map((field) => {
+                        const label = field.querySelector('label');
+                        const control = field.querySelector('input, select, textarea');
+                        if (!label || !control) return null;
+                        const value = control.tagName === 'SELECT'
+                            ? control.options[control.selectedIndex].text.trim()
+                            : control.value.trim();
+                        return value ? `${label.textContent.trim()}: ${value}` : null;
+                    })
+                    .filter(Boolean);
+            }
+
+            function getResultSections() {
+                if (config.isVaccinationTracker) {
+                    const rows = vaccineSchedule.map((item, index) => {
+                        const checkbox = document.getElementById(`vaccine-check-${index + 1}`);
+                        const status = checkbox && checkbox.checked ? 'Marked complete' : 'Not marked complete';
+                        let target = `Listed age: ${item.age}`;
+
+                        if (vaccineDob.value) {
+                            const birthDate = new Date(`${vaccineDob.value}T00:00:00`);
+                            const startDate = vaccineTargetDate(birthDate, item.unit, item.start);
+                            const endDate = vaccineTargetDate(birthDate, item.unit, item.end);
+                            target += item.start === item.end
+                                ? `; estimated target date: ${formatVaccineDate(startDate)}`
+                                : `; estimated window: ${formatVaccineDate(startDate)} – ${formatVaccineDate(endDate)}`;
+                            if (!checkbox?.checked && todayStart > endDate) {
+                                target += '; listed window passed — confirm with clinician';
+                            }
+                        }
+
+                        return `[${checkbox?.checked ? 'x' : ' '}] ${String(index + 1).padStart(2, '0')}. ${item.name} — ${target} — ${status}`;
+                    });
+                    const completed = vaccineGroups.querySelectorAll('input[type="checkbox"]:checked').length;
+                    return {
+                        highlights: [
+                            `${completed} of ${vaccineSchedule.length} entries marked complete`,
+                            `${vaccineSchedule.length - completed} entries not marked complete`
+                        ],
+                        details: rows
+                    };
+                }
+
+                const highlights = [];
+                resultElement.querySelectorAll('.result-tag, .result-big, .mini-stat').forEach((item) => {
+                    if (item.classList.contains('mini-stat')) {
+                        const label = item.querySelector('.lbl')?.textContent.trim();
+                        const value = item.querySelector('.val')?.textContent.trim();
+                        if (label && value) highlights.push(`${label}: ${value}`);
+                        return;
+                    }
+                    const text = item.textContent.replace(/\s+/g, ' ').trim();
+                    if (text) highlights.push(text);
                 });
+
+                const details = [];
+                resultElement.querySelectorAll('.result-detail p, .breakdown-title, .breakdown-row, .zone-table th, .zone-table td, .zone-desc, .range-labels span')
+                    .forEach((item) => {
+                        const text = item.textContent.replace(/\s+/g, ' ').trim();
+                        if (text) details.push(text);
+                    });
+                return { highlights, details };
             }
 
-            function getToolSpecificInsights() {
-                const text = resultSummary.toLowerCase();
-                const insights = [];
-
-                if (calcName === 'calcBMI') {
-                    insights.push('BMI trend was evaluated against Asian BMI reference ranges for a more precise clinical perspective.');
-                    insights.push('Interpretation considered height, weight, and risk category to support proactive lifestyle guidance.');
-                    insights.push('Recommended follow-up: nutrition review, activity planning, and repeat measurement at a future visit.');
-                }
-
-                if (calcName === 'calcIDRS') {
-                    insights.push('IDRS score was assessed using age, waist circumference, family history, and physical activity profile.');
-                    insights.push('Risk assessment is intended as a preventive screening prompt and should be complemented by blood sugar testing when indicated.');
-                    insights.push('If score is moderate or high, clinical review and laboratory follow-up are recommended.');
-                }
-
-                if (calcName === 'calcHR') {
-                    insights.push('Heart rate zones were estimated using age-based maximum heart rate and intensity-based training zones.');
-                    insights.push('Zone guidance helps distinguish recovery, aerobic, threshold, and high-intensity effort ranges.');
-                    insights.push('Physical training should remain aligned with symptoms, medical history, and daily recovery capacity.');
-                }
-
-                if (calcName === 'calcGrowth') {
-                    insights.push('Growth profile was compared against age-based reference curves to review weight and height patterns.');
-                    insights.push('A single reading outside the median should be interpreted in context of trend, diet, and developmental history.');
-                    insights.push('A physician review is useful if growth pattern is irregular or family history suggests concern.');
-                }
-
-                if (calcName === 'calcVax') {
-                    insights.push('Vaccination status was mapped against the standard childhood immunization timeline for preventive coverage.');
-                    insights.push('Due and upcoming doses were highlighted to reinforce completion and reduce missed opportunities.');
-                    insights.push('The summary should be reviewed with the parent or guardian during routine follow-up.');
-                }
-
-                if (calcName === 'calcBP') {
-                    insights.push('Blood pressure was interpreted using standard clinical cut-offs for systolic and diastolic values.');
-                    insights.push('This summary supports early detection of elevated or hypertensive ranges and informs follow-up planning.');
-                    insights.push('Repeat trend monitoring is recommended if readings are near borderline or persistently elevated.');
-                }
-
-                if (!insights.length) {
-                    insights.push('The patient assessment was completed successfully and is ready for physician review.');
-                    insights.push('Clinical interpretation and follow-up planning should be discussed in-person with the care team.');
-                }
-
-                return insights;
-            }
-
-            function getSectionTitle() {
-                if (calcName === 'calcBMI') return 'Lifestyle and metabolic insight';
-                if (calcName === 'calcIDRS') return 'Risk stratification insight';
-                if (calcName === 'calcHR') return 'Cardio performance insight';
-                if (calcName === 'calcGrowth') return 'Growth and development insight';
-                if (calcName === 'calcVax') return 'Immunization coverage insight';
-                if (calcName === 'calcBP') return 'Cardiovascular health insight';
-                return 'Clinical insight';
+            function getFollowUp() {
+                return config.actionPlan;
             }
 
             function addFooter() {
-                doc.setDrawColor(217, 188, 124);
-                doc.setLineWidth(0.5);
-                doc.line(18, 274, 192, 274);
-                doc.setTextColor(17, 35, 30);
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(9);
-                doc.text('Kanha Clinic • Navsari | Personalized Human-Centered Medicine', 18, 280);
-                doc.setFont('helvetica', 'normal');
-                doc.text('Confidential wellness report • generated automatically for follow-up consultation', 18, 286);
+                const pageCount = doc.internal.getNumberOfPages();
+                for (let page = 1; page <= pageCount; page += 1) {
+                    doc.setPage(page);
+                    doc.setDrawColor(217, 188, 124);
+                    doc.setLineWidth(0.4);
+                    doc.line(margin, pageHeight - 20, pageWidth - margin, pageHeight - 20);
+                    doc.setTextColor(70, 79, 72);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(7.5);
+                    doc.text('PRIVATE HEALTH SUMMARY  |  For discussion with your clinician', margin, pageHeight - 14);
+                    doc.text(`Page ${page} of ${pageCount}`, pageWidth - margin, pageHeight - 14, { align: 'right' });
+                    doc.setTextColor(128, 101, 45);
+                    doc.setFontSize(7);
+                    doc.text('Kanha Clinic · Navsari · +91 63541 92880', margin, pageHeight - 8);
+                }
             }
 
-            addHeader();
-
+            drawPageHeader();
             doc.setTextColor(17, 35, 30);
             doc.setFont('helvetica', 'bold');
-            doc.setFontSize(18);
-            doc.text(toolLabel, 18, 76);
+            doc.setFontSize(15);
+            doc.text('Patient & report details', margin, y);
+            y += 5;
+            addSection('Report profile', [
+                `${config.isVaccinationTracker ? 'Child / patient' : 'Patient'}: ${patientInfo.name}`,
+                `Phone: ${patientInfo.phone}`,
+                `Address: ${patientInfo.address}`,
+                `Assessment: ${config.label}`,
+                `Generated: ${createdOn}`
+            ].join('\n'));
 
-            const patientLines = [
-                ['Name', patientInfo.name],
-                ['Phone', patientInfo.phone],
-                ['Address', patientInfo.address],
-                ['Report type', toolLabel],
-                ['Generated on', createdOn]
-            ];
+            addSection('Measurements and responses', getInputRows().join('\n') || 'No measurement or response values were captured.');
 
-            let y = 86;
-            patientLines.forEach(([label, value]) => {
-                doc.setFont('helvetica', 'bold');
-                doc.setFontSize(9.5);
-                doc.text(label + ':', 18, y);
-                doc.setFont('helvetica', 'normal');
-                doc.text(String(value), 62, y, { maxWidth: 130 });
-                y += 8;
-            });
-
-            const summaryBox = [
-                'This document represents a premium preventive care summary generated after the patient completed a health assessment.',
-                'It is prepared to support high-quality physician review, care planning, and timely follow-up decision-making.'
-            ];
-            doc.setFillColor(240, 233, 220);
-            doc.roundedRect(18, y + 2, 174, 24, 4, 4, 'F');
-            doc.setTextColor(17, 35, 30);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(10);
-            doc.text('Clinical Note', 24, y + 10);
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(8.6);
-            doc.text(summaryBox[0], 24, y + 17, { maxWidth: 165 });
-            doc.text(summaryBox[1], 24, y + 23, { maxWidth: 165 });
-
-            y += 42;
-            const insightLines = getToolSpecificInsights();
-            addCard(18, y, 174, 30, getSectionTitle(), insightLines);
-
-            y += 38;
-            const scoreLines = [];
-            const scoreText = resultSummary.length > 240 ? resultSummary.slice(0, 240) + '...' : resultSummary;
-            scoreLines.push(scoreText);
-            addCard(18, y, 174, 36, 'Assessment Summary', scoreLines);
-
-            y += 46;
-            const carePlan = [
-                '1. Review this report with the physician during the next consultation or telehealth follow-up.',
-                '2. Align daily habits, nutrition, activity, and sleep with the findings from this assessment.',
-                '3. Repeat key measurements in 3–6 months if trends are borderline or improving slowly.',
-                '4. Continue preventive care, screening, and vaccination milestones as directed by the treating doctor.'
-            ];
-            addCard(18, y, 174, 38, 'Recommended Follow-up Plan', carePlan);
-
-            const nextPageY = 70;
-            doc.addPage();
-            addHeader();
-
-            doc.setTextColor(17, 35, 30);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(18);
-            doc.text('Detailed Clinical Interpretation', 18, 76);
-
-            const details = [
-                'This premium report is generated to provide a more complete patient experience and deeper preventive insight.',
-                'The assessment summary reflects tool-based screening results and should be discussed in context of medical history, symptoms, lifestyle, and clinician judgment.',
-                'The objective is to support better health decision-making, earlier interventions, and higher-quality long-term patient care.',
-                'For any severe symptoms or urgent concerns, the patient should seek immediate medical assistance or contact the clinic without delay.'
-            ];
-            let detailY = 88;
-            details.forEach((line) => {
-                const wrapped = doc.splitTextToSize(line, 170);
-                doc.setFont('helvetica', 'normal');
-                doc.setFontSize(10);
-                doc.text(wrapped, 18, detailY);
-                detailY += wrapped.length * 6 + 3;
-            });
-
-            const highlightedPlan = [
-                '• Confirm diagnosis or risk category with a doctor-led review.',
-                '• Discuss lifestyle modifications, monitoring frequency, and data trends.',
-                '• Schedule screening or laboratory tests when clinically indicated.',
-                '• Build a long-term preventive care roadmap for the patient and family.'
-            ];
-            addCard(18, detailY + 4, 174, 30, 'Doctor Guidance Summary', highlightedPlan);
-
-            const finalNote = [
-                'This report remains confidential and is intended for medical review and care planning.',
-                'It is not a replacement for formal diagnosis, emergency advice, or in-person medical examination.'
-            ];
-            addCard(18, detailY + 38, 174, 20, 'Important Notice', finalNote);
+            const results = getResultSections();
+            addSection('Key results at a glance', results.highlights.join('\n') || getToolResultSummary(calcName));
+            addSection('Detailed assessment output', results.details.join('\n') || getToolResultSummary(calcName));
+            addSection('How this assessment works', config.method);
+            addSection('Understanding your result', config.interpretation);
+            addSection('Practical next steps', getFollowUp());
+            addSection('Questions to discuss at your visit', config.questions);
+            addSection('Limitations and clinical context', config.note);
+            addSection('Important notice', 'This browser-generated educational summary is not a medical diagnosis or a substitute for an examination. Results depend on the information entered and the screening method used. Confirm interpretation, decisions, and next steps with a qualified clinician.');
 
             addFooter();
-            doc.save('Kanha-Clinic-Ultra-Detailed-Health-Report.pdf');
+            const safeName = patientInfo.name.trim().replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'Patient';
+            const now = new Date();
+            const reportDate = [
+                now.getFullYear(),
+                String(now.getMonth() + 1).padStart(2, '0'),
+                String(now.getDate()).padStart(2, '0')
+            ].join('-');
+            doc.save(`Kanha-Clinic-${safeName}-${calcName}-${reportDate}.pdf`);
         }
 
         document.querySelectorAll('.tool-calc-btn').forEach(button => {
@@ -3724,63 +4933,137 @@
             });
         });
 
-        const doctorGalleryModal = document.getElementById('doctorGalleryModal');
-        const doctorGalleryTitle = document.getElementById('doctorGalleryTitle');
-        const doctorGalleryGrid = document.getElementById('doctorGalleryGrid');
-        const doctorGalleryClose = document.getElementById('doctorGalleryClose');
+        const doctorProfileModal = document.getElementById('doctorProfileModal');
+        const doctorGalleryTrack = document.getElementById('doctorGalleryTrack');
+        const doctorProfileName = document.getElementById('doctorProfileName');
+        const doctorProfileGujarati = document.getElementById('doctorProfileGujarati');
+        const doctorProfileRole = document.getElementById('doctorProfileRole');
+        const doctorProfileBio = document.getElementById('doctorProfileBio');
+        const doctorProfileCredentials = document.getElementById('doctorProfileCredentials');
+        const doctorProfileExpertise = document.getElementById('doctorProfileExpertise');
+        const doctorProfileEducation = document.getElementById('doctorProfileEducation');
+        const doctorProfileWork = document.getElementById('doctorProfileWork');
+        const doctorProfileExpertisePanel = document.getElementById('doctorProfileExpertisePanel');
+        const doctorProfileEducationPanel = document.getElementById('doctorProfileEducationPanel');
+        const doctorProfileWorkPanel = document.getElementById('doctorProfileWorkPanel');
+        const doctorProfileFocus = document.getElementById('doctorProfileFocus');
+        const doctorProfileClose = document.getElementById('doctorProfileClose');
         let activeDoctorCard = null;
 
-        function openDoctorGallery(card) {
-            const doctorName = card.dataset.doctor;
-            const galleryKey = card.dataset.gallery;
-            if (!doctorName || !galleryKey) return;
+        const doctorProfileGalleries = {
+            adult: [
+                'https://i.ibb.co/yB8byGSz/c7ba2158-1b4c-4456-9c2b-1cde004afc3f.jpg',
+                'https://i.ibb.co/6cRX37Gx/d571bd8d-48ef-4cf0-8b01-c79016726e3e.jpg',
+                'https://i.ibb.co/Gv9MrfHv/a65e9aa0-4ee7-4e00-b597-046b70a91cb7.jpg',
+                'https://i.ibb.co/JRDS26RP/c538758c-f682-435b-a599-4b509dafdd03.jpg',
+                'https://i.ibb.co/GfzfTwRD/2825fa2c-727d-48ca-8944-77c761550d52.jpg',
+                'https://i.ibb.co/wrB7Njms/471f5874-9b6a-49fe-9d1b-c2f3565b6ab4.jpg',
+                'https://i.ibb.co/FkgmLTYM/c72d7bc4-a3b8-4ba3-9d6c-026758e10839.jpg',
+                'https://i.ibb.co/SwLY47Zc/b5455161-1a82-4777-951e-0cca74cddee8.jpg',
+                'https://i.ibb.co/dvc0Ybb/224ed43c-1797-4cf7-a311-de25ef4fc31d.jpg',
+                'https://i.ibb.co/x8Bqcyk8/a0a40a61-93b3-4ee2-92c5-51967986e8ba.jpg'
+            ],
+            paediatric: [
+                'https://i.ibb.co/Z1Fsmnyc/d31dde7e-9d8c-48b4-9eb5-f52b9e5a70bc.jpg',
+                'https://i.ibb.co/Y41F2qyy/f903c2fc-e9c2-4fef-ad4d-b4452c19ac42.jpg',
+                'https://i.ibb.co/ZpNsZ2cj/54c9e042-2aad-47c7-b209-334c3a0747d4.jpg',
+                'https://i.ibb.co/DDg01xsF/26ef1f4a-accf-4e1f-b717-9499d417c7ab.jpg',
+                'https://i.ibb.co/SXck0986/2c85e67b-b8ac-497f-b6cf-e5b9c466b33f.jpg',
+                'https://i.ibb.co/JjNxFvQh/693a9038-59b7-4b31-9ccf-ed6d75357ce1.jpg',
+                'https://i.ibb.co/mrHzbcFw/5d5793a2-8844-41bf-b5bb-5a2bdd189413.jpg',
+                'https://i.ibb.co/RkK2rv92/b68dcf58-94db-42c7-906e-b3c9080e72a1.jpg',
+                'https://i.ibb.co/hJR7JLgQ/628d798d-067c-43c8-a5b9-02aa9549134f.jpg',
+                'https://i.ibb.co/YBdSM8jP/b9c5d354-720f-43d3-9166-9e8b94fdd8d4.jpg'
+            ]
+        };
+
+        function openDoctorProfile(card) {
+            const galleryKey = card.dataset.doctorGallery;
+            const images = doctorProfileGalleries[galleryKey];
+            if (!images) return;
 
             activeDoctorCard = card;
-            doctorGalleryTitle.textContent = `${doctorName} — Photo Gallery`;
-            doctorGalleryGrid.replaceChildren();
+            doctorProfileName.textContent = card.querySelector('h3').textContent.trim();
+            doctorProfileGujarati.textContent = card.querySelector('.gj').textContent.trim();
+            doctorProfileRole.textContent = card.querySelector('.role').textContent.trim();
+            doctorProfileBio.textContent = card.dataset.doctorBio;
+            doctorProfileFocus.textContent = card.dataset.doctorFocus;
+            const fillProfileList = (list, values) => {
+                list.replaceChildren(...values.map((value) => {
+                    const item = document.createElement('li');
+                    item.textContent = value.trim();
+                    return item;
+                }));
+            };
+            doctorProfileCredentials.replaceChildren(...Array.from(card.querySelectorAll('li'), (source) => {
+                const item = document.createElement('li');
+                item.textContent = source.textContent.trim();
+                return item;
+            }));
+            const expertise = card.dataset.doctorExpertise ? card.dataset.doctorExpertise.split('|') : [];
+            const education = card.dataset.doctorEducation ? card.dataset.doctorEducation.split('|') : [];
+            const work = card.dataset.doctorWork ? card.dataset.doctorWork.split('|') : [];
+            fillProfileList(doctorProfileExpertise, expertise);
+            fillProfileList(doctorProfileEducation, education);
+            fillProfileList(doctorProfileWork, work);
+            doctorProfileExpertisePanel.hidden = expertise.length === 0;
+            doctorProfileEducationPanel.hidden = education.length === 0;
+            doctorProfileWorkPanel.hidden = work.length === 0;
 
-            for (let index = 1; index <= 10; index += 1) {
+            const galleryItems = images.map((src, index) => {
+                const frame = document.createElement('div');
+                frame.className = 'doctor-gallery-image';
                 const image = document.createElement('img');
-                const photoNumber = String(index).padStart(2, '0');
-                image.src = `https://picsum.photos/seed/kanha-doctor-${galleryKey}-${photoNumber}/350/350`;
-                image.alt = `${doctorName} gallery photo ${index}`;
-                image.width = 350;
-                image.height = 350;
+                image.src = src;
+                image.alt = `Kanha Clinic gallery image ${index + 1}`;
+                image.width = 440;
+                image.height = 380;
                 image.loading = 'lazy';
-                doctorGalleryGrid.appendChild(image);
-            }
+                frame.appendChild(image);
+                return frame;
+            });
+            const repeatedGalleryItems = galleryItems.map((item) => {
+                const clone = item.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.querySelector('img').alt = '';
+                return clone;
+            });
+            doctorGalleryTrack.replaceChildren(...galleryItems, ...repeatedGalleryItems);
 
-            doctorGalleryModal.classList.add('open');
-            doctorGalleryModal.setAttribute('aria-hidden', 'false');
+            doctorProfileModal.classList.add('open');
+            doctorProfileModal.setAttribute('aria-hidden', 'false');
+            card.setAttribute('aria-expanded', 'true');
             document.body.classList.add('modal-open');
-            doctorGalleryClose.focus();
+            doctorProfileClose.focus();
         }
 
-        function closeDoctorGallery() {
-            doctorGalleryModal.classList.remove('open');
-            doctorGalleryModal.setAttribute('aria-hidden', 'true');
+        function closeDoctorProfile() {
+            doctorProfileModal.classList.remove('open');
+            doctorProfileModal.setAttribute('aria-hidden', 'true');
             document.body.classList.remove('modal-open');
-            if (activeDoctorCard) activeDoctorCard.focus();
+            if (activeDoctorCard) {
+                activeDoctorCard.setAttribute('aria-expanded', 'false');
+                activeDoctorCard.focus();
+            }
         }
 
-        document.querySelectorAll('.doc-card').forEach(card => {
-            card.addEventListener('click', () => openDoctorGallery(card));
+        document.querySelectorAll('.doc-card[data-doctor-gallery]').forEach((card) => {
+            card.addEventListener('click', () => openDoctorProfile(card));
             card.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
-                    openDoctorGallery(card);
+                    openDoctorProfile(card);
                 }
             });
         });
 
-        doctorGalleryClose.addEventListener('click', closeDoctorGallery);
-        doctorGalleryModal.addEventListener('click', (event) => {
-            if (event.target === doctorGalleryModal) closeDoctorGallery();
+        doctorProfileClose.addEventListener('click', closeDoctorProfile);
+        doctorProfileModal.addEventListener('click', (event) => {
+            if (event.target === doctorProfileModal) closeDoctorProfile();
         });
-
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && doctorGalleryModal.classList.contains('open')) {
-                closeDoctorGallery();
+            if (event.key === 'Escape' && doctorProfileModal.classList.contains('open')) {
+                closeDoctorProfile();
             }
         });
 
@@ -3788,19 +5071,29 @@
         const serviceModalTitle = document.getElementById('serviceModalTitle');
         const serviceModalText = document.getElementById('serviceModalText');
         const serviceModalList = document.getElementById('serviceModalList');
+        const serviceModalNumber = document.getElementById('serviceModalNumber');
+        const serviceModalIcon = document.getElementById('serviceModalIcon');
         const serviceModalClose = document.getElementById('serviceModalClose');
 
         function openServiceModal(card) {
             const title = card.dataset.title || card.querySelector('h3').textContent.trim();
             const description = card.dataset.description || card.querySelector('p').textContent.trim();
             const points = card.dataset.points ? card.dataset.points.split('|') : [];
+            const icon = card.querySelector('.service-icon svg');
 
             serviceModalTitle.textContent = title;
             serviceModalText.textContent = description;
-            serviceModalList.innerHTML = points.map(item => `<li>${item}</li>`).join('');
+            serviceModalNumber.textContent = card.querySelector('.num').textContent.trim();
+            serviceModalIcon.replaceChildren(icon.cloneNode(true));
+            serviceModalList.replaceChildren(...points.map((point) => {
+                const item = document.createElement('li');
+                item.textContent = point.trim();
+                return item;
+            }));
             serviceModal.classList.add('open');
             serviceModal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
+            serviceModalClose.focus();
         }
 
         function closeServiceModal() {
@@ -3860,14 +5153,20 @@
             const body = card.querySelector('.tool-body');
             const isOpen = card.classList.contains('open');
             document.querySelectorAll('.tool-card.open').forEach(c => {
-                if (c.id !== id) { c.classList.remove('open'); c.querySelector('.tool-body').style.maxHeight = null; }
+                if (c.id !== id) {
+                    c.classList.remove('open');
+                    c.querySelector('.tool-body').style.maxHeight = null;
+                    c.querySelector('.tool-head').setAttribute('aria-expanded', 'false');
+                }
             });
             if (isOpen) {
                 card.classList.remove('open');
                 body.style.maxHeight = null;
+                card.querySelector('.tool-head').setAttribute('aria-expanded', 'false');
             } else {
                 card.classList.add('open');
                 body.style.maxHeight = body.scrollHeight + 'px';
+                card.querySelector('.tool-head').setAttribute('aria-expanded', 'true');
                 setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
             }
         }
@@ -3878,6 +5177,196 @@
                 body.style.maxHeight = body.scrollHeight + 'px';
             }
         }
+
+        /* ---------- TOOL 6: Vaccination Tracker ---------- */
+        const vaccineSchedule = [
+            { name: 'BCG', age: 'Birth', unit: 'days', start: 0, end: 0 },
+            { name: 'Hepatitis B (1)', age: 'Birth', unit: 'days', start: 0, end: 0 },
+            { name: 'OPV 0', age: 'Birth', unit: 'days', start: 0, end: 0 },
+            { name: 'DPaT 1', age: '6 weeks', unit: 'weeks', start: 6, end: 6 },
+            { name: 'Hib 1', age: '6 weeks', unit: 'weeks', start: 6, end: 6 },
+            { name: 'Hepatitis B 2', age: '6 weeks', unit: 'weeks', start: 6, end: 6 },
+            { name: 'IPV 1', age: '6 weeks', unit: 'weeks', start: 6, end: 6 },
+            { name: 'Rotavirus 1', age: '6 weeks', unit: 'weeks', start: 6, end: 6 },
+            { name: 'PCV 1', age: '6 weeks', unit: 'weeks', start: 6, end: 6 },
+            { name: 'DTaP 2', age: '10 weeks', unit: 'weeks', start: 10, end: 10 },
+            { name: 'Rotavirus 2', age: '10 weeks', unit: 'weeks', start: 10, end: 10 },
+            { name: 'IPV 2', age: '10 weeks', unit: 'weeks', start: 10, end: 10 },
+            { name: 'Hib 2', age: '10 weeks', unit: 'weeks', start: 10, end: 10 },
+            { name: 'PCV 2', age: '10 weeks', unit: 'weeks', start: 10, end: 10 },
+            { name: 'IPV 3', age: '14 weeks', unit: 'weeks', start: 14, end: 14 },
+            { name: 'Hib 3', age: '14 weeks', unit: 'weeks', start: 14, end: 14 },
+            { name: 'Hepatitis B 3', age: '14 weeks', unit: 'weeks', start: 14, end: 14 },
+            { name: 'Rotavirus 3', age: '14 weeks', unit: 'weeks', start: 14, end: 14 },
+            { name: 'PCV 3', age: '14 weeks', unit: 'weeks', start: 14, end: 14 },
+            { name: 'DPaT 3', age: '14 weeks', unit: 'weeks', start: 14, end: 14 },
+            { name: 'Flu', age: '6 months', unit: 'months', start: 6, end: 6 },
+            { name: 'MMR 1', age: '9 months', unit: 'months', start: 9, end: 9 },
+            { name: 'Typhoid Conjugate', age: '9 months', unit: 'months', start: 9, end: 9 },
+            { name: 'Hepatitis A (1)', age: '12 months', unit: 'months', start: 12, end: 12 },
+            { name: 'MMR 2', age: '15 months', unit: 'months', start: 15, end: 15 },
+            { name: 'Varicella 1', age: '15 months', unit: 'months', start: 15, end: 15 },
+            { name: 'IPV Booster 1', age: '18 months', unit: 'months', start: 18, end: 18 },
+            { name: 'Hib Booster', age: '18 months', unit: 'months', start: 18, end: 18 },
+            { name: 'PCV Booster', age: '18 months', unit: 'months', start: 18, end: 18 },
+            { name: 'Hepatitis A (2)', age: '18 months', unit: 'months', start: 18, end: 18 },
+            { name: 'DTwP Booster 2', age: '18 months', unit: 'months', start: 18, end: 18 },
+            { name: 'Typhoid 1', age: '2 years', unit: 'years', start: 2, end: 2 },
+            { name: 'DTwP Booster 2', age: '4–5 years', unit: 'years', start: 4, end: 5 },
+            { name: 'OPV 5', age: '4–5 years', unit: 'years', start: 4, end: 5 },
+            { name: 'MMR', age: '4–5 years', unit: 'years', start: 4, end: 5 },
+            { name: 'Typhoid 2', age: '4–5 years', unit: 'years', start: 4, end: 5 },
+            { name: 'Varicella 2', age: '4–6 years', unit: 'years', start: 4, end: 6 },
+            { name: 'Td', age: '10 years', unit: 'years', start: 10, end: 10 },
+            { name: 'HPV (Girls)', age: '9–14 years', unit: 'years', start: 9, end: 14 }
+        ];
+
+        const vaccineGroups = document.getElementById('vaccine-groups');
+        const vaccineDob = document.getElementById('vaccine-child-dob');
+        const vaccineProgressCount = document.getElementById('vaccine-progress-count');
+        const vaccineDobError = document.getElementById('vaccine-dob-error');
+        const today = new Date();
+        const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        vaccineDob.max = [
+            todayStart.getFullYear(),
+            String(todayStart.getMonth() + 1).padStart(2, '0'),
+            String(todayStart.getDate()).padStart(2, '0')
+        ].join('-');
+
+        function vaccineTargetDate(birthDate, unit, age) {
+            if (unit === 'days' || unit === 'weeks') {
+                const target = new Date(birthDate);
+                target.setDate(target.getDate() + (unit === 'weeks' ? age * 7 : age));
+                return target;
+            }
+            const monthsToAdd = age * (unit === 'years' ? 12 : 1);
+            const targetMonth = birthDate.getMonth() + monthsToAdd;
+            const targetYear = birthDate.getFullYear() + Math.floor(targetMonth / 12);
+            const normalizedMonth = targetMonth % 12;
+            const lastDay = new Date(targetYear, normalizedMonth + 1, 0).getDate();
+            return new Date(targetYear, normalizedMonth, Math.min(birthDate.getDate(), lastDay));
+        }
+
+        function formatVaccineDate(date) {
+            return date.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+        }
+
+        function updateVaccineStatus(item, row, checkbox) {
+            const status = row.querySelector('.vaccine-status');
+            row.classList.toggle('is-complete', checkbox.checked);
+            row.classList.remove('is-window-passed');
+
+            if (checkbox.checked) {
+                status.textContent = '✓ Marked complete';
+                return;
+            }
+
+            if (!vaccineDob.value) {
+                status.textContent = 'Enter date of birth for target dates';
+                return;
+            }
+
+            const birthDate = new Date(`${vaccineDob.value}T00:00:00`);
+            const startDate = vaccineTargetDate(birthDate, item.unit, item.start);
+            const endDate = vaccineTargetDate(birthDate, item.unit, item.end);
+
+            if (todayStart < startDate) {
+                status.textContent = item.start === item.end
+                    ? `Target: ${formatVaccineDate(startDate)}`
+                    : `Window: ${formatVaccineDate(startDate)} – ${formatVaccineDate(endDate)}`;
+            } else if (todayStart <= endDate) {
+                status.textContent = 'Within listed age window';
+            } else {
+                status.textContent = 'Age window passed — ask clinician about catch-up';
+                row.classList.add('is-window-passed');
+            }
+        }
+
+        const vaccineAgeGroups = new Map();
+        vaccineSchedule.forEach((item, index) => {
+            if (!vaccineAgeGroups.has(item.age)) {
+                const group = document.createElement('fieldset');
+                group.className = 'vaccine-group';
+                const legend = document.createElement('legend');
+                legend.textContent = item.age;
+                const list = document.createElement('div');
+                list.className = 'vaccine-list';
+                group.append(legend, list);
+                vaccineGroups.append(group);
+                vaccineAgeGroups.set(item.age, list);
+            }
+
+            const row = document.createElement('div');
+            row.className = 'vaccine-row';
+            const main = document.createElement('div');
+            main.className = 'vaccine-row-main';
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `vaccine-check-${index + 1}`;
+            checkbox.dataset.vaccineIndex = String(index);
+            const label = document.createElement('label');
+            label.htmlFor = checkbox.id;
+            label.textContent = item.name;
+            const itemNumber = document.createElement('span');
+            itemNumber.textContent = `Item ${index + 1} · ${item.age}`;
+            label.append(itemNumber);
+            const status = document.createElement('span');
+            status.className = 'vaccine-status';
+            status.setAttribute('aria-live', 'polite');
+            main.append(checkbox, label);
+            row.append(main, status);
+            vaccineAgeGroups.get(item.age).append(row);
+            updateVaccineStatus(item, row, checkbox);
+        });
+
+        function refreshVaccineProgress() {
+            const completed = vaccineGroups.querySelectorAll('input[type="checkbox"]:checked').length;
+            vaccineProgressCount.textContent = `${completed} of ${vaccineSchedule.length}`;
+            refreshOpenHeight('tool-vaccines');
+        }
+
+        vaccineGroups.addEventListener('change', (event) => {
+            const checkbox = event.target;
+            if (!(checkbox instanceof HTMLInputElement) || checkbox.type !== 'checkbox') return;
+            const index = Number(checkbox.dataset.vaccineIndex);
+            const row = checkbox.closest('.vaccine-row');
+            if (!Number.isInteger(index) || !row) return;
+            updateVaccineStatus(vaccineSchedule[index], row, checkbox);
+            refreshVaccineProgress();
+        });
+
+        vaccineDob.addEventListener('change', () => {
+            const birthDate = vaccineDob.value ? new Date(`${vaccineDob.value}T00:00:00`) : null;
+            if (birthDate && birthDate > todayStart) {
+                vaccineDobError.textContent = 'Please choose a date of birth that is today or earlier.';
+                vaccineDob.setAttribute('aria-invalid', 'true');
+                vaccineGroups.querySelectorAll('.vaccine-row').forEach((row) => {
+                    row.classList.remove('is-window-passed');
+                    if (!row.querySelector('input[type="checkbox"]').checked) {
+                        row.querySelector('.vaccine-status').textContent = 'Enter a valid date of birth';
+                    }
+                });
+                refreshOpenHeight('tool-vaccines');
+                return;
+            }
+            vaccineDobError.textContent = '';
+            vaccineDob.removeAttribute('aria-invalid');
+            vaccineGroups.querySelectorAll('.vaccine-row').forEach((row) => {
+                const checkbox = row.querySelector('input[type="checkbox"]');
+                const index = Number(checkbox.dataset.vaccineIndex);
+                updateVaccineStatus(vaccineSchedule[index], row, checkbox);
+            });
+            refreshOpenHeight('tool-vaccines');
+        });
+
+        document.getElementById('vaccine-reset').addEventListener('click', () => {
+            vaccineGroups.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+                checkbox.checked = false;
+                const index = Number(checkbox.dataset.vaccineIndex);
+                updateVaccineStatus(vaccineSchedule[index], checkbox.closest('.vaccine-row'), checkbox);
+            });
+            refreshVaccineProgress();
+        });
 
         /* ---------- TOOL 1: BMI ---------- */
         function calcBMI() {
@@ -4095,59 +5584,7 @@
             refreshOpenHeight('tool-growth');
         }
 
-        /* ---------- TOOL 5: Vaccination Schedule ---------- */
-        const vaxSchedule = [
-            { days: 0, label: 'BCG, OPV-0, Hepatitis B-1', note: 'At birth' },
-            { days: 42, label: 'DTwP-1, IPV-1, Hep B-2, Hib-1, Rotavirus-1, PCV-1', note: '6 weeks' },
-            { days: 70, label: 'DTwP-2, IPV-2, Hib-2, Rotavirus-2, PCV-2', note: '10 weeks' },
-            { days: 98, label: 'DTwP-3, IPV-3, Hib-3, Rotavirus-3, PCV-3', note: '14 weeks' },
-            { days: 183, label: 'Hepatitis B-3, OPV-1 booster dose', note: '6 months' },
-            { days: 274, label: 'Measles/MR-1, Vitamin A-1', note: '9 months' },
-            { days: 365, label: 'Hepatitis A-1', note: '12 months' },
-            { days: 456, label: 'MMR-2, Varicella-1, PCV Booster', note: '15 months' },
-            { days: 548, label: 'DTwP Booster-1, OPV Booster-1', note: '16–18 months' },
-            { days: 730, label: 'Typhoid Conjugate Vaccine', note: '2 years' },
-            { days: 1460, label: 'DTwP Booster-2, OPV Booster-2, MMR-3', note: '4–6 years' }
-        ];
-        function calcVax() {
-            const dobStr = document.getElementById('vax-dob').value;
-            const out = document.getElementById('vax-result');
-            if (!dobStr) { out.innerHTML = '<p class="result-detail">Please select the date of birth.</p>'; out.classList.add('show'); refreshOpenHeight('tool-vax'); return; }
-            const dob = new Date(dobStr);
-            const today = new Date();
-            const ageDays = Math.floor((today - dob) / (1000 * 60 * 60 * 24));
-            if (ageDays < 0 || ageDays > 3000) { out.innerHTML = '<p class="result-detail">Please enter a valid date of birth for a child under 8 years old.</p>'; out.classList.add('show'); refreshOpenHeight('tool-vax'); return; }
-            let rows = '';
-            let completed = 0, dueNow = 0, upcoming = 0, nextDue = null;
-            vaxSchedule.forEach(v => {
-                let status, cls;
-                if (ageDays >= v.days + 21) { status = 'Completed'; cls = 'tag-good'; completed++; }
-                else if (ageDays >= v.days - 14 && ageDays <= v.days + 20) { status = 'Due Now'; cls = 'tag-alert'; dueNow++; if (!nextDue) nextDue = v; }
-                else { status = 'Upcoming'; cls = 'tag-warn'; upcoming++; if (!nextDue) nextDue = v; }
-                rows += `<div class="vax-item"><span>${v.note} — ${v.label}</span><span class="vax-status ${cls}">${status}</span></div>`;
-            });
-            const nextDueDays = nextDue ? nextDue.days - ageDays : null;
-            const nextDueLine = nextDue
-                ? (nextDueDays <= 0
-                    ? `<strong>${nextDue.label}</strong> is due now (scheduled around ${nextDue.note}).`
-                    : `Next up: <strong>${nextDue.label}</strong> in approximately ${nextDueDays} day${nextDueDays === 1 ? '' : 's'} (around ${nextDue.note}).`)
-                : 'All doses on this reference schedule are complete.';
-            out.innerHTML = `
-      <div class="result-detail"><p>Current age: <strong>${Math.floor(ageDays / 30.44)} months</strong> (${ageDays} days). ${nextDueLine}</p></div>
-      <div class="mini-stats">
-        <div class="mini-stat"><div class="lbl">Completed</div><div class="val">${completed}</div></div>
-        <div class="mini-stat"><div class="lbl">Due Now</div><div class="val">${dueNow}</div></div>
-        <div class="mini-stat"><div class="lbl">Upcoming</div><div class="val">${upcoming}</div></div>
-      </div>
-      <div class="breakdown">
-        <div class="breakdown-title">Full reference schedule</div>
-        ${rows}
-      </div>`;
-            out.classList.add('show');
-            refreshOpenHeight('tool-vax');
-        }
-
-        /* ---------- TOOL 6: Blood Pressure ---------- */
+        /* ---------- TOOL 5: Blood Pressure ---------- */
         function calcBP() {
             const sys = parseInt(document.getElementById('bp-sys').value);
             const dia = parseInt(document.getElementById('bp-dia').value);
